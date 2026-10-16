@@ -1,0 +1,3273 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>VII C · MTs Al Anwar</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{--n1:#00f0ff;--n2:#ff00e5;--n3:#7b2ff7;--dk:#05030f}
+  html{scroll-behavior:smooth}
+  body{font-family:'Outfit',sans-serif;background:var(--dk);color:#fff;overflow-x:hidden}
+
+  .bg-nebula{position:fixed;inset:0;z-index:-2;
+    background:radial-gradient(ellipse at 20% 20%,rgba(123,47,247,.4),transparent 50%),
+               radial-gradient(ellipse at 80% 30%,rgba(0,240,255,.25),transparent 50%),
+               radial-gradient(ellipse at 50% 80%,rgba(255,0,229,.3),transparent 55%),var(--dk);
+    animation:neb 20s ease-in-out infinite}
+  @keyframes neb{0%,100%{filter:hue-rotate(0)}50%{filter:hue-rotate(40deg)}}
+  #stars{position:fixed;inset:0;z-index:-1;pointer-events:none}
+  .star{position:absolute;background:#fff;border-radius:50%;animation:tw 3s infinite}
+  @keyframes tw{0%,100%{opacity:.2;transform:scale(1)}50%{opacity:1;transform:scale(1.5)}}
+
+  header{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:40px 20px;position:relative}
+  .badge{display:inline-flex;align-items:center;gap:10px;padding:10px 24px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:100px;font-size:.85rem;letter-spacing:4px;text-transform:uppercase;backdrop-filter:blur(20px);margin-bottom:32px;animation:sd 1s both}
+  .badge::before{content:"";width:8px;height:8px;background:var(--n1);border-radius:50%;box-shadow:0 0 12px var(--n1);animation:pl 1.5s infinite}
+  @keyframes pl{0%,100%{opacity:1}50%{opacity:.3}}
+  @keyframes sd{from{opacity:0;transform:translateY(-30px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes su{from{opacity:0;transform:translateY(50px)}to{opacity:1;transform:translateY(0)}}
+
+  .hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(4rem,15vw,12rem);font-weight:700;line-height:.9;letter-spacing:-.05em;background:linear-gradient(135deg,#fff,#00f0ff 40%,#ff00e5 70%,#ffd700);background-size:300% 300%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gf 6s ease infinite,su 1.2s .2s both;filter:drop-shadow(0 0 40px rgba(123,47,247,.6));margin-bottom:20px}
+  .hero-title span{display:inline-block;animation:lf 3s ease-in-out infinite}
+  @keyframes gf{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+  @keyframes lf{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  .hero-sub{font-size:clamp(1rem,1.5vw,1.3rem);color:rgba(255,255,255,.7);font-weight:300;letter-spacing:2px;margin-bottom:12px;animation:su 1s .5s both}
+  .hero-year{font-size:.9rem;color:rgba(255,255,255,.4);letter-spacing:6px;animation:su 1s .7s both}
+  .scroll-hint{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:12px;font-size:.75rem;letter-spacing:3px;color:rgba(255,255,255,.5);animation:su 1s 1s both}
+  .scroll-hint .line{width:1px;height:50px;background:linear-gradient(180deg,var(--n1),transparent);animation:lg 2s infinite}
+  @keyframes lg{0%,100%{transform:scaleY(1);opacity:1}50%{transform:scaleY(.4);opacity:.3}}
+
+  nav{position:sticky;top:24px;z-index:100;display:flex;justify-content:center;flex-wrap:wrap;gap:6px;padding:8px;margin:0 auto 60px;max-width:fit-content;background:rgba(10,5,30,.6);backdrop-filter:blur(30px) saturate(180%);border:1px solid rgba(255,255,255,.1);border-radius:100px;box-shadow:0 20px 60px rgba(0,0,0,.5),inset 0 1px 0 rgba(255,255,255,.1),0 0 40px rgba(123,47,247,.2)}
+  nav a{color:rgba(255,255,255,.8);padding:12px 22px;text-decoration:none;font-weight:500;font-size:.9rem;border-radius:100px;transition:all .4s cubic-bezier(.2,.9,.3,1.2);position:relative;overflow:hidden}
+  nav a i{margin-right:6px;font-size:.85rem;color:var(--n1)}
+  nav a::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--n3),var(--n1));opacity:0;transition:opacity .4s;border-radius:100px;z-index:-1}
+  nav a:hover{color:#fff;transform:translateY(-2px);box-shadow:0 10px 30px rgba(0,240,255,.4)}
+  nav a:hover::before{opacity:1}
+
+  .container{max-width:1280px;margin:auto;padding:0 24px 120px}
+  section{margin-bottom:140px;scroll-margin-top:120px}
+  .section-head{text-align:center;margin-bottom:70px}
+  .section-num{font-family:'Space Grotesk',sans-serif;font-size:.85rem;letter-spacing:6px;color:var(--n1);margin-bottom:16px;display:block;opacity:.8}
+  .section-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:700;letter-spacing:-.03em;background:linear-gradient(135deg,#fff,#a8c0ff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+  .section-title::after{content:"";display:block;width:80px;height:3px;background:linear-gradient(90deg,var(--n1),var(--n2));margin:20px auto 0;border-radius:3px;box-shadow:0 0 20px var(--n1)}
+
+  .profil-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px}
+  .glass-card{position:relative;padding:36px 28px;background:linear-gradient(145deg,rgba(255,255,255,.06),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:24px;text-align:center;transition:all .5s cubic-bezier(.2,.9,.3,1.2);overflow:hidden;backdrop-filter:blur(20px)}
+  .glass-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(0,240,255,.8),transparent);opacity:0;transition:opacity .5s}
+  .glass-card:hover::before{opacity:1}
+  .glass-card:hover{transform:translateY(-10px);border-color:rgba(0,240,255,.4);box-shadow:0 30px 60px rgba(0,0,0,.5),0 0 50px rgba(0,240,255,.2)}
+  .card-icon{display:inline-flex;align-items:center;justify-content:center;width:70px;height:70px;margin-bottom:20px;border-radius:20px;background:linear-gradient(145deg,rgba(0,240,255,.1),rgba(255,0,229,.08));border:1px solid rgba(0,240,255,.2);transition:transform .6s cubic-bezier(.2,.9,.3,1.2)}
+  .card-icon i{font-size:1.8rem;background:linear-gradient(135deg,#00f0ff,#ff00e5);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:drop-shadow(0 0 15px rgba(0,240,255,.6))}
+  .glass-card:hover .card-icon{transform:translateY(-5px) scale(1.1) rotate(-8deg)}
+  .glass-card h3{font-size:.8rem;letter-spacing:3px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:10px;font-weight:500}
+  .glass-card p{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;color:#fff;letter-spacing:-.02em}
+
+  .siswa-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px}
+  .siswa{position:relative;padding:22px 18px;background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.07);border-radius:18px;transition:all .4s cubic-bezier(.2,.9,.3,1.2);overflow:hidden}
+  .siswa::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--n1),var(--n2));transform:scaleY(0);transform-origin:bottom;transition:transform .4s}
+  .siswa:hover::before{transform:scaleY(1)}
+  .siswa:hover{transform:translateX(6px);background:linear-gradient(145deg,rgba(0,240,255,.08),rgba(255,0,229,.05));border-color:rgba(0,240,255,.3);box-shadow:0 15px 40px rgba(0,240,255,.15)}
+  .siswa-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1rem;color:#fff;margin-bottom:6px}
+  .siswa-num{font-size:.75rem;color:rgba(0,240,255,.7);letter-spacing:2px;text-transform:uppercase}
+
+  .table-wrapper{background:linear-gradient(145deg,rgba(255,255,255,.04),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-radius:24px;padding:8px;overflow-x:auto;backdrop-filter:blur(20px);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+  table{width:100%;border-collapse:separate;border-spacing:0}
+  th{background:linear-gradient(135deg,rgba(123,47,247,.5),rgba(0,240,255,.3));color:#fff;padding:20px 24px;text-align:left;font-weight:600;letter-spacing:2px;font-size:.8rem;text-transform:uppercase}
+  th:first-child{border-radius:16px 0 0 0}
+  th:last-child{border-radius:0 16px 0 0}
+  td{padding:18px 24px;color:rgba(255,255,255,.85);border-bottom:1px solid rgba(255,255,255,.05);font-size:.95rem}
+  tbody tr{transition:all .3s}
+  tbody tr:hover{background:linear-gradient(90deg,rgba(0,240,255,.08),transparent)}
+  tbody tr:hover td{color:#fff}
+  tbody tr:hover td:first-child{color:var(--n1);font-weight:600}
+  tbody tr:last-child td{border-bottom:none}
+  td i.subj-icon{margin-right:10px;color:var(--n1);filter:drop-shadow(0 0 8px rgba(0,240,255,.6))}
+
+  .galeri{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+  .galeri-item{position:relative;height:240px;border-radius:24px;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;overflow:hidden;border:1px solid rgba(255,255,255,.1);box-shadow:0 20px 50px rgba(0,0,0,.4);transition:all .6s cubic-bezier(.2,.9,.3,1.2)}
+  .galeri-item::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,.7));z-index:1}
+  .galeri-item .emoji{position:relative;z-index:2;margin-bottom:12px;transition:transform .6s cubic-bezier(.2,.9,.3,1.2)}
+  .galeri-item .emoji i{font-size:3.5rem;color:#fff;filter:drop-shadow(0 10px 30px rgba(0,0,0,.5))}
+  .galeri-item .label{position:relative;z-index:2;font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:1.1rem;letter-spacing:1px}
+  .galeri-item:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 60px rgba(123,47,247,.4);border-color:rgba(0,240,255,.4)}
+  .galeri-item:hover .emoji{transform:scale(1.3) translateY(-10px)}
+  .g1{background:linear-gradient(135deg,#667eea,#764ba2)}
+  .g2{background:linear-gradient(135deg,#f093fb,#f5576c)}
+  .g3{background:linear-gradient(135deg,#4facfe,#00f2fe)}
+  .g4{background:linear-gradient(135deg,#43e97b,#38f9d7)}
+  .g5{background:linear-gradient(135deg,#fa709a,#fee140)}
+  .g6{background:linear-gradient(135deg,#30cfd0,#330867)}
+
+  .kontak-box{position:relative;padding:60px 40px;background:linear-gradient(145deg,rgba(255,255,255,.05),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.1);border-radius:32px;text-align:center;overflow:hidden;backdrop-filter:blur(20px);box-shadow:0 30px 80px rgba(0,0,0,.4)}
+  .kontak-box p{color:rgba(255,255,255,.7);margin-bottom:32px;font-size:1.1rem;letter-spacing:1px}
+  .kontak-links{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+  .btn-3d{display:inline-flex;align-items:center;gap:10px;padding:16px 32px;background:linear-gradient(135deg,rgba(123,47,247,.2),rgba(0,240,255,.15));color:#fff;text-decoration:none;border-radius:100px;font-weight:600;font-size:.9rem;letter-spacing:1px;transition:all .4s cubic-bezier(.2,.9,.3,1.2);border:1px solid rgba(255,255,255,.15);position:relative;overflow:hidden}
+  .btn-3d::before{content:"";position:absolute;inset:0;background:linear-gradient(135deg,var(--n3),var(--n1));opacity:0;transition:opacity .4s;z-index:-1}
+  .btn-3d i{font-size:1.2rem}
+  .btn-3d:hover{transform:translateY(-4px);border-color:transparent;box-shadow:0 20px 40px rgba(0,240,255,.4),0 0 30px rgba(123,47,247,.6)}
+  .btn-3d:hover::before{opacity:1}
+
+  footer{text-align:center;padding:60px 20px 40px;border-top:1px solid rgba(255,255,255,.06);position:relative}
+  footer::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:200px;height:1px;background:linear-gradient(90deg,transparent,var(--n1),transparent)}
+  footer p{color:rgba(255,255,255,.4);font-size:.85rem;letter-spacing:2px;margin:6px 0}
+  .heart{color:var(--n2);animation:hb 1.5s infinite;display:inline-block}
+  @keyframes hb{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
+
+  .reveal{opacity:0;transform:translateY(60px);transition:all 1s cubic-bezier(.2,.9,.3,1.2)}
+  .reveal.active{opacity:1;transform:translateY(0)}
+
+  @media (max-width:600px){
+    nav{top:12px;padding:6px;gap:2px}
+    nav a{padding:9px 12px;font-size:.75rem}
+    nav a i{margin-right:3px;font-size:.7rem}
+    section{margin-bottom:90px}
+    .section-head{margin-bottom:45px}
+    .galeri-item{height:180px}
+    .galeri-item .emoji i{font-size:2.5rem}
+    .kontak-box{padding:40px 24px}
+  }
+</style>
+  <!-- ===== PATCH: PERBAIKI TAMPILAN ATAS ===== -->
+<style>
+  /* Header lebih pendek, konten bawah langsung kelihatan */
+  header {
+    min-height: 70vh !important;
+    padding-top: 90px !important;
+    padding-bottom: 40px !important;
+  }
+
+  /* Judul VII C pakai warna solid + glow (anti kotak) */
+  .hero-title {
+    background: none !important;
+    -webkit-text-fill-color: #ffffff !important;
+    color: #ffffff !important;
+    text-shadow:
+      0 0 20px rgba(0, 240, 255, 0.9),
+      0 0 40px rgba(0, 240, 255, 0.6),
+      0 0 60px rgba(255, 0, 229, 0.5),
+      0 0 80px rgba(123, 47, 247, 0.4) !important;
+    filter: none !important;
+    font-size: clamp(5rem, 22vw, 10rem) !important;
+    animation: pulseGlow 3s ease-in-out infinite !important;
+  }
+
+  @keyframes pulseGlow {
+    0%, 100% {
+      text-shadow:
+        0 0 20px rgba(0, 240, 255, 0.9),
+        0 0 40px rgba(0, 240, 255, 0.6),
+        0 0 60px rgba(255, 0, 229, 0.5),
+        0 0 80px rgba(123, 47, 247, 0.4);
+    }
+    50% {
+      text-shadow:
+        0 0 30px rgba(255, 0, 229, 1),
+        0 0 60px rgba(255, 0, 229, 0.7),
+        0 0 90px rgba(0, 240, 255, 0.6),
+        0 0 120px rgba(123, 47, 247, 0.5);
+    }
+  }
+
+  /* Huruf VII C warna gradient tetap dimunculkan tapi fallback aman */
+  .hero-title span {
+    background: linear-gradient(135deg, #ffffff 0%, #00f0ff 50%, #ff00e5 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: transparent !important;
+  }
+
+  /* Navigasi pindah ke atas layar (fixed) supaya selalu tampil */
+  nav {
+    position: fixed !important;
+    top: 12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    z-index: 999 !important;
+    margin: 0 !important;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.6),
+                inset 0 1px 0 rgba(255,255,255,0.15),
+                0 0 30px rgba(123,47,247,0.4) !important;
+  }
+
+  /* Biar konten tidak ketutup nav */
+  .container {
+    padding-top: 40px !important;
+  }
+
+  /* Badge di atas judul */
+  .badge {
+    margin-top: 20px !important;
+  }
+
+  /* Scroll hint hilang di mobile karena header pendek */
+  @media (max-width: 600px) {
+    header {
+      min-height: 60vh !important;
+      padding-top: 90px !important;
+    }
+    .hero-title {
+      font-size: clamp(6rem, 30vw, 12rem) !important;
+    }
+    .scroll-hint {
+      display: none !important;
+    }
+    nav {
+      top: 8px !important;
+      padding: 5px !important;
+      gap: 2px !important;
+    }
+    nav a {
+      padding: 8px 10px !important;
+      font-size: 0.72rem !important;
+    }
+    nav a i {
+      display: none !important;
+    }
+    section {
+      margin-bottom: 70px !important;
+    }
+    .section-head {
+      margin-bottom: 35px !important;
+    }
+    .section-title {
+      font-size: clamp(2rem, 10vw, 3rem) !important;
+    }
+  }
+</style>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: TAHUN AJARAN & MTS AL ANWAR ===== -->
+<style>
+  /* Perbaiki tulisan MTS AL ANWAR — jarak huruf normal */
+  .hero-sub {
+    letter-spacing: 6px !important;
+    font-size: clamp(1.1rem, 2.5vw, 1.5rem) !important;
+    font-weight: 500 !important;
+    color: #a8c0ff !important;
+    text-shadow:
+      0 0 10px rgba(0, 240, 255, 0.5),
+      0 0 20px rgba(123, 47, 247, 0.4) !important;
+    margin-bottom: 16px !important;
+  }
+
+  /* Perbaiki tahun ajaran — jarak lebih rapi */
+  .hero-year {
+    letter-spacing: 4px !important;
+    font-size: 0.95rem !important;
+    color: rgba(255, 255, 255, 0.55) !important;
+    font-weight: 400 !important;
+  }
+
+  /* Badge — ganti jadi lebih clean */
+  .badge {
+    letter-spacing: 3px !important;
+    font-size: 0.8rem !important;
+    font-weight: 500 !important;
+  }
+
+  /* Responsive mobile — huruf tidak terlalu lebar */
+  @media (max-width: 600px) {
+    .hero-sub {
+      letter-spacing: 3px !important;
+      font-size: 1rem !important;
+    }
+    .hero-year {
+      letter-spacing: 2px !important;
+      font-size: 0.8rem !important;
+    }
+    .badge {
+      letter-spacing: 2px !important;
+      font-size: 0.72rem !important;
+      padding: 8px 18px !important;
+    }
+  }
+</style>
+
+<script>
+  // Ganti tahun ajaran saat halaman siap
+  window.addEventListener('DOMContentLoaded', () => {
+    // Update tahun ajaran di hero
+    document.querySelectorAll('.hero-year').forEach(el => {
+      el.textContent = 'TAHUN AJARAN 2026 / 2029';
+    });
+
+    // Update badge jadi tahun masuk
+    document.querySelectorAll('.badge').forEach(el => {
+      el.innerHTML = '<span></span> ANGKATAN 2026';
+    });
+
+    // Update footer
+    document.querySelectorAll('footer p').forEach(el => {
+      if (el.textContent.includes('2026')) {
+        el.innerHTML = '&copy; 2026 - 2029 · KELAS VII C MTs AL ANWAR';
+      }
+    });
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: CREDIT PEMBUAT BAYU ===== -->
+<style>
+  /* Credit Bayu di footer */
+  .credit-bayu {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 14px;
+    padding: 10px 22px;
+    background: linear-gradient(135deg, rgba(0,240,255,0.1), rgba(255,0,229,0.08));
+    border: 1px solid rgba(0,240,255,0.3);
+    border-radius: 100px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    color: #fff;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 10px 30px rgba(0,240,255,0.15),
+                0 0 20px rgba(123,47,247,0.2);
+    transition: all 0.4s cubic-bezier(0.2,0.9,0.3,1.2);
+  }
+  .credit-bayu:hover {
+    transform: translateY(-3px);
+    border-color: rgba(0,240,255,0.6);
+    box-shadow: 0 15px 40px rgba(0,240,255,0.3),
+                0 0 30px rgba(255,0,229,0.4);
+  }
+  .credit-bayu .label {
+    color: rgba(255,255,255,0.55);
+    font-weight: 400;
+  }
+  .credit-bayu .name {
+    background: linear-gradient(135deg, #00f0ff, #ff00e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-weight: 700;
+    font-size: 1rem;
+    letter-spacing: 3px;
+    filter: drop-shadow(0 0 10px rgba(0,240,255,0.6));
+  }
+  .credit-bayu .icon {
+    font-size: 1.1rem;
+    color: #00f0ff;
+    filter: drop-shadow(0 0 8px rgba(0,240,255,0.8));
+  }
+
+  /* Watermark kecil di kanan bawah */
+  .watermark-bayu {
+    position: fixed;
+    bottom: 14px;
+    right: 14px;
+    padding: 8px 16px;
+    background: rgba(10,5,30,0.7);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0,240,255,0.25);
+    border-radius: 100px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.7);
+    z-index: 998;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+    transition: all 0.4s;
+  }
+  .watermark-bayu:hover {
+    border-color: rgba(0,240,255,0.6);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.5), 0 0 20px rgba(0,240,255,0.4);
+  }
+  .watermark-bayu b {
+    background: linear-gradient(135deg, #00f0ff, #ff00e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    letter-spacing: 3px;
+  }
+
+  @media (max-width: 600px) {
+    .credit-bayu {
+      font-size: 0.75rem;
+      padding: 8px 16px;
+      letter-spacing: 1.5px;
+    }
+    .credit-bayu .name {
+      font-size: 0.9rem;
+      letter-spacing: 2px;
+    }
+    .watermark-bayu {
+      font-size: 0.65rem;
+      padding: 6px 12px;
+      bottom: 10px;
+      right: 10px;
+    }
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // ===== Tambah credit Bayu di FOOTER =====
+    const footer = document.querySelector('footer');
+    if (footer && !document.querySelector('.credit-bayu')) {
+      const credit = document.createElement('div');
+      credit.className = 'credit-bayu';
+      credit.innerHTML = `
+        <i class="fa-solid fa-code icon"></i>
+        <span class="label">DIBUAT OLEH</span>
+        <span class="name">BAYU</span>
+      `;
+      footer.appendChild(credit);
+    }
+
+    // ===== Tambah watermark kecil di kanan bawah =====
+    if (!document.querySelector('.watermark-bayu')) {
+      const wm = document.createElement('div');
+      wm.className = 'watermark-bayu';
+      wm.innerHTML = '© <b>BAYU</b> 2026';
+      document.body.appendChild(wm);
+    }
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: LOADING SCREEN BAYU ===== -->
+<style>
+  /* LOADING SCREEN */
+  #loading-bayu {
+    position: fixed;
+    inset: 0;
+    background: #05030f;
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    overflow: hidden;
+  }
+  #loading-bayu.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Bintang di background loading */
+  #loading-bayu .lstar {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    animation: ltw 2s infinite;
+  }
+  @keyframes ltw {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+  }
+
+  /* Lingkaran neon berputar */
+  .load-ring {
+    position: relative;
+    width: 140px;
+    height: 140px;
+    margin-bottom: 40px;
+  }
+  .load-ring::before,
+  .load-ring::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-top-color: #00f0ff;
+    border-right-color: #00f0ff;
+    animation: spin 1.2s linear infinite;
+    filter: drop-shadow(0 0 15px #00f0ff);
+  }
+  .load-ring::after {
+    inset: 15px;
+    border-top-color: #ff00e5;
+    border-right-color: #ff00e5;
+    animation: spin 0.9s linear infinite reverse;
+    filter: drop-shadow(0 0 15px #ff00e5);
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Huruf B di tengah */
+  .load-letter {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #00f0ff, #ff00e5);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 25px rgba(0, 240, 255, 0.8));
+    animation: letterBeat 1.5s ease-in-out infinite;
+  }
+  @keyframes letterBeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+
+  /* Teks loading */
+  .load-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 6px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    opacity: 0;
+    animation: fadeUpLoad 1s ease forwards;
+    animation-delay: 0.3s;
+    text-align: center;
+    padding: 0 20px;
+  }
+  .load-name {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: 8px;
+    background: linear-gradient(135deg, #00f0ff, #ff00e5, #ffd700, #00f0ff);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeUpLoad 1s ease forwards 0.6s, flowName 3s ease infinite;
+    opacity: 0;
+    filter: drop-shadow(0 0 30px rgba(0, 240, 255, 0.7));
+    text-align: center;
+    padding: 0 20px;
+  }
+  @keyframes flowName {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  @keyframes fadeUpLoad {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Progress bar */
+  .load-bar {
+    width: 220px;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 40px;
+    opacity: 0;
+    animation: fadeUpLoad 1s ease forwards 1s;
+  }
+  .load-bar-fill {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #00f0ff, #ff00e5);
+    border-radius: 10px;
+    box-shadow: 0 0 15px #00f0ff;
+    animation: fillBar 2.2s ease forwards 1s;
+  }
+  @keyframes fillBar {
+    0% { width: 0%; }
+    100% { width: 100%; }
+  }
+
+  @media (max-width: 600px) {
+    .load-ring { width: 110px; height: 110px; margin-bottom: 30px; }
+    .load-letter { font-size: 3rem; }
+    .load-text { font-size: 0.8rem; letter-spacing: 4px; }
+    .load-name { letter-spacing: 5px; }
+    .load-bar { width: 180px; }
+  }
+</style>
+
+<!-- LOADING HTML -->
+<div id="loading-bayu">
+  <div class="load-ring">
+    <div class="load-letter">B</div>
+  </div>
+  <div class="load-text">DIBUAT OLEH</div>
+  <div class="load-name">BAYU</div>
+  <div class="load-bar"><div class="load-bar-fill"></div></div>
+</div>
+
+<script>
+  (function() {
+    // Buat bintang di loading screen
+    const loader = document.getElementById('loading-bayu');
+    if (loader) {
+      for (let i = 0; i < 60; i++) {
+        const s = document.createElement('div');
+        s.className = 'lstar';
+        const size = Math.random() * 2 + 1;
+        s.style.width = size + 'px';
+        s.style.height = size + 'px';
+        s.style.left = Math.random() * 100 + '%';
+        s.style.top = Math.random() * 100 + '%';
+        s.style.animationDelay = Math.random() * 2 + 's';
+        loader.appendChild(s);
+      }
+
+      // Sembunyikan setelah 3.2 detik
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          loader.classList.add('hide');
+          // Hapus dari DOM setelah transisi selesai
+          setTimeout(() => { loader.remove(); }, 900);
+        }, 3200);
+      });
+
+      // Fallback: kalau load event sudah lewat
+      if (document.readyState === 'complete') {
+        setTimeout(() => {
+          loader.classList.add('hide');
+          setTimeout(() => { loader.remove(); }, 900);
+        }, 3200);
+      }
+    }
+  })();
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: HILANGKAN GALERI ===== -->
+<style>
+  #galeri { display: none !important; }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Hapus section galeri dari DOM
+    const galeri = document.getElementById('galeri');
+    if (galeri) galeri.remove();
+
+    // Hapus link "Galeri" dari navigasi
+    document.querySelectorAll('nav a').forEach(a => {
+      if (a.getAttribute('href') === '#galeri') a.remove();
+    });
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: WELCOME SCREEN ===== -->
+<style>
+  #welcome-screen {
+    position: fixed;
+    inset: 0;
+    background: #05030f;
+    z-index: 99998;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+    overflow: hidden;
+  }
+  #welcome-screen.show {
+    opacity: 1;
+    visibility: visible;
+  }
+  #welcome-screen.hide {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  /* Bintang background */
+  #welcome-screen .wstar {
+    position: absolute;
+    background: #fff;
+    border-radius: 50%;
+    animation: wtw 2s infinite;
+  }
+  @keyframes wtw {
+    0%, 100% { opacity: 0.2; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.5); }
+  }
+
+  /* Glow orbs */
+  #welcome-screen::before {
+    content: "";
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(123,47,247,0.4), transparent 70%);
+    top: 20%;
+    left: 10%;
+    filter: blur(60px);
+    animation: floatOrb 8s ease-in-out infinite;
+  }
+  #welcome-screen::after {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,240,255,0.3), transparent 70%);
+    bottom: 15%;
+    right: 10%;
+    filter: blur(60px);
+    animation: floatOrb 8s ease-in-out infinite 2s;
+  }
+  @keyframes floatOrb {
+    0%, 100% { transform: translate(0, 0); }
+    50% { transform: translate(30px, -30px); }
+  }
+
+  /* Konten welcome */
+  .welcome-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .welcome-sub {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
+    letter-spacing: 8px;
+    color: #00f0ff;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+    opacity: 0;
+    text-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
+  }
+  #welcome-screen.show .welcome-sub {
+    animation: welcomeFadeUp 1s ease forwards 0.2s;
+  }
+
+  .welcome-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(2.5rem, 10vw, 6rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: #fff;
+    margin-bottom: 10px;
+    opacity: 0;
+    text-shadow:
+      0 0 20px rgba(0, 240, 255, 0.8),
+      0 0 40px rgba(255, 0, 229, 0.6),
+      0 0 60px rgba(123, 47, 247, 0.5);
+  }
+  #welcome-screen.show .welcome-title {
+    animation: welcomeFadeUp 1s ease forwards 0.5s;
+  }
+
+  .welcome-class {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: clamp(4rem, 15vw, 9rem);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    line-height: 1;
+    background: linear-gradient(135deg, #00f0ff 0%, #ff00e5 50%, #ffd700 100%);
+    background-size: 300% 300%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    filter: drop-shadow(0 0 40px rgba(0, 240, 255, 0.7));
+    opacity: 0;
+    margin-top: 10px;
+  }
+  #welcome-screen.show .welcome-class {
+    animation: welcomeFadeUp 1s ease forwards 0.8s, welcomeFlow 3s ease infinite;
+  }
+
+  @keyframes welcomeFadeUp {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes welcomeFlow {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* Garis dekor */
+  .welcome-line {
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00f0ff, #ff00e5, transparent);
+    margin: 30px auto 20px;
+    box-shadow: 0 0 15px #00f0ff;
+    opacity: 0;
+  }
+  #welcome-screen.show .welcome-line {
+    animation: lineExpand 1.2s ease forwards 1.1s;
+  }
+  @keyframes lineExpand {
+    from { width: 0; opacity: 0; }
+    to { width: 200px; opacity: 1; }
+  }
+
+  .welcome-motto {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(0.85rem, 1.8vw, 1rem);
+    letter-spacing: 4px;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    opacity: 0;
+  }
+  #welcome-screen.show .welcome-motto {
+    animation: welcomeFadeUp 1s ease forwards 1.4s;
+  }
+
+  @media (max-width: 600px) {
+    .welcome-sub { letter-spacing: 5px; }
+    .welcome-motto { letter-spacing: 2px; }
+  }
+</style>
+
+<!-- WELCOME HTML -->
+<div id="welcome-screen">
+  <div class="welcome-content">
+    <div class="welcome-sub">Welcome To</div>
+    <h1 class="welcome-title">CLASS</h1>
+    <div class="welcome-class">VII C</div>
+    <div class="welcome-line"></div>
+    <p class="welcome-motto">MTs Al Anwar · Angkatan 2026</p>
+  </div>
+</div>
+
+<script>
+  (function() {
+    const welcome = document.getElementById('welcome-screen');
+    if (!welcome) return;
+
+    // Bintang background welcome
+    for (let i = 0; i < 80; i++) {
+      const s = document.createElement('div');
+      s.className = 'wstar';
+      const size = Math.random() * 2 + 1;
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = Math.random() * 100 + '%';
+      s.style.animationDelay = Math.random() * 2 + 's';
+      welcome.appendChild(s);
+    }
+
+    // Fungsi untuk menampilkan welcome
+    function showWelcome() {
+      welcome.classList.add('show');
+
+      // Sembunyikan welcome setelah 4 detik
+      setTimeout(() => {
+        welcome.classList.add('hide');
+        setTimeout(() => welcome.remove(), 900);
+      }, 4000);
+    }
+
+    // Jalankan setelah loading BAYU selesai
+    // Loading BAYU: muncul dari awal sampai 3.2 detik
+    // Welcome: muncul di 3.2 detik, hilang di 7.2 detik
+    window.addEventListener('load', () => {
+      setTimeout(showWelcome, 3300);
+    });
+
+    // Fallback kalau load event sudah lewat
+    if (document.readyState === 'complete') {
+      setTimeout(showWelcome, 3300);
+    }
+  })();
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: LOGO CLASS VII C ===== -->
+<style>
+  /* Container logo di hero */
+  .hero-logo {
+    width: clamp(100px, 22vw, 150px);
+    height: clamp(100px, 22vw, 150px);
+    margin-bottom: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    animation: logoFloat 4s ease-in-out infinite;
+    filter: drop-shadow(0 0 30px rgba(0, 240, 255, 0.6))
+            drop-shadow(0 0 60px rgba(123, 47, 247, 0.4));
+  }
+
+  /* Cahaya berputar di belakang logo */
+  .hero-logo::before {
+    content: "";
+    position: absolute;
+    inset: -15px;
+    border-radius: 50%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0%,
+      rgba(0, 240, 255, 0.3) 20%,
+      transparent 40%,
+      rgba(255, 0, 229, 0.3) 60%,
+      transparent 80%,
+      rgba(0, 240, 255, 0.3) 100%
+    );
+    filter: blur(15px);
+    animation: rotateLogo 6s linear infinite;
+    z-index: -1;
+  }
+
+  /* SVG logo */
+  .hero-logo svg {
+    width: 100%;
+    height: 100%;
+    filter: drop-shadow(0 4px 20px rgba(0, 240, 255, 0.5));
+  }
+
+  /* Animasi float */
+  @keyframes logoFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-10px) scale(1.03); }
+  }
+
+  /* Animasi rotate cahaya */
+  @keyframes rotateLogo {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Ukuran mobile */
+  @media (max-width: 600px) {
+    .hero-logo {
+      margin-bottom: 18px;
+    }
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Cari hero header
+    const header = document.querySelector('header');
+    const badge = document.querySelector('.badge');
+
+    // Kalau sudah ada logo, skip
+    if (document.querySelector('.hero-logo')) return;
+    if (!header || !badge) return;
+
+    // Buat logo SVG
+    const logo = document.createElement('div');
+    logo.className = 'hero-logo';
+    logo.innerHTML = `
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Gradient utama -->
+          <linearGradient id="logoGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f0ff"/>
+            <stop offset="50%" stop-color="#7b2ff7"/>
+            <stop offset="100%" stop-color="#ff00e5"/>
+          </linearGradient>
+          <linearGradient id="logoGrad2" x1="100%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#ffd700"/>
+            <stop offset="50%" stop-color="#ff00e5"/>
+            <stop offset="100%" stop-color="#00f0ff"/>
+          </linearGradient>
+          <radialGradient id="logoGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.4"/>
+            <stop offset="100%" stop-color="#00f0ff" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+
+        <!-- Lingkaran luar berputar (garis putus-putus) -->
+        <circle cx="100" cy="100" r="88" fill="none" stroke="url(#logoGrad1)"
+                stroke-width="2" stroke-dasharray="6 8" opacity="0.7">
+          <animateTransform attributeName="transform" type="rotate"
+                            from="0 100 100" to="360 100 100"
+                            dur="20s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Lingkaran glow -->
+        <circle cx="100" cy="100" r="80" fill="url(#logoGlow)"/>
+
+        <!-- Cincin dalam -->
+        <circle cx="100" cy="100" r="72" fill="none" stroke="url(#logoGrad2)"
+                stroke-width="3" opacity="0.9">
+          <animate attributeName="r" values="72;76;72" dur="3s" repeatCount="indefinite"/>
+          <animate attributeName="opacity" values="0.9;0.5;0.9" dur="3s" repeatCount="indefinite"/>
+        </circle>
+
+        <!-- Shield / tameng -->
+        <path d="M 100 30 L 145 45 L 145 95 Q 145 130 100 155 Q 55 130 55 95 L 55 45 Z"
+              fill="url(#logoGrad1)" opacity="0.15"
+              stroke="url(#logoGrad1)" stroke-width="2"/>
+
+        <!-- Bintang atas -->
+        <path d="M 100 42 L 103 50 L 111 53 L 103 56 L 100 64 L 97 56 L 89 53 L 97 50 Z"
+              fill="#ffd700">
+          <animateTransform attributeName="transform" type="rotate"
+                            from="0 100 53" to="360 100 53"
+                            dur="10s" repeatCount="indefinite"/>
+        </path>
+
+        <!-- Tulisan VII -->
+        <text x="100" y="105" text-anchor="middle"
+              font-family="'Space Grotesk', sans-serif"
+              font-size="38" font-weight="700" letter-spacing="-1"
+              fill="url(#logoGrad1)">
+          VII
+        </text>
+
+        <!-- Tulisan C besar -->
+        <text x="100" y="145" text-anchor="middle"
+              font-family="'Space Grotesk', sans-serif"
+              font-size="42" font-weight="700" letter-spacing="-2"
+              fill="url(#logoGrad2)">
+          C
+        </text>
+      </svg>
+    `;
+
+    // Sisipkan logo setelah badge
+    badge.parentNode.insertBefore(logo, badge.nextSibling);
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: LOGO PREMIUM CLASS VII C ===== -->
+<style>
+  /* Container logo */
+  .hero-logo {
+    width: clamp(140px, 28vw, 200px);
+    height: clamp(140px, 28vw, 200px);
+    margin: 0 auto 30px;
+    display: block;
+    position: relative;
+    animation: logoFloat 4s ease-in-out infinite;
+    filter:
+      drop-shadow(0 0 30px rgba(0, 240, 255, 0.7))
+      drop-shadow(0 0 60px rgba(123, 47, 247, 0.5))
+      drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+  }
+
+  /* Partikel berputar mengelilingi logo */
+  .hero-logo::before,
+  .hero-logo::after {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 50% 0%, #00f0ff 0%, transparent 3%),
+      radial-gradient(circle at 100% 50%, #ff00e5 0%, transparent 3%),
+      radial-gradient(circle at 50% 100%, #ffd700 0%, transparent 3%),
+      radial-gradient(circle at 0% 50%, #7b2ff7 0%, transparent 3%);
+    animation: orbitParticle 8s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-logo::after {
+    inset: -20px;
+    animation: orbitParticle 12s linear infinite reverse;
+    background:
+      radial-gradient(circle at 25% 25%, #00f0ff 0%, transparent 2%),
+      radial-gradient(circle at 75% 75%, #ff00e5 0%, transparent 2%);
+  }
+
+  .hero-logo svg {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  @keyframes logoFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-12px) scale(1.03); }
+  }
+  @keyframes orbitParticle {
+    to { transform: rotate(360deg); }
+  }
+
+  /* Efek shine melintas di SVG */
+  .hero-logo .shine-path {
+    animation: shineMove 3s ease-in-out infinite;
+  }
+  @keyframes shineMove {
+    0% { transform: translateX(-100px); opacity: 0; }
+    50% { opacity: 0.6; }
+    100% { transform: translateX(200px); opacity: 0; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-logo { margin-bottom: 22px; }
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Hapus logo lama kalau ada
+    document.querySelectorAll('.hero-logo').forEach(el => el.remove());
+
+    const header = document.querySelector('header');
+    const badge = document.querySelector('.badge');
+    if (!header || !badge) return;
+
+    // Buat logo SVG premium
+    const logo = document.createElement('div');
+    logo.className = 'hero-logo';
+    logo.innerHTML = `
+      <svg viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <!-- Gradient utama: cyan → ungu → pink -->
+          <linearGradient id="gradMain" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#00f0ff"/>
+            <stop offset="35%" stop-color="#7b2ff7"/>
+            <stop offset="70%" stop-color="#ff00e5"/>
+            <stop offset="100%" stop-color="#ffd700"/>
+          </linearGradient>
+
+          <!-- Gradient emas -->
+          <linearGradient id="gradGold" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ffd700"/>
+            <stop offset="50%" stop-color="#ffa500"/>
+            <stop offset="100%" stop-color="#ffd700"/>
+          </linearGradient>
+
+          <!-- Gradient teks VII -->
+          <linearGradient id="gradText1" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#ffffff"/>
+            <stop offset="50%" stop-color="#00f0ff"/>
+            <stop offset="100%" stop-color="#7b2ff7"/>
+          </linearGradient>
+
+          <!-- Gradient teks C -->
+          <linearGradient id="gradText2" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#ff00e5"/>
+            <stop offset="50%" stop-color="#ffd700"/>
+            <stop offset="100%" stop-color="#ff00e5"/>
+          </linearGradient>
+
+          <!-- Glow radial -->
+          <radialGradient id="gradGlow" cx="50%" cy="50%" r="50%">
+            <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.5"/>
+            <stop offset="60%" stop-color="#7b2ff7" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="#7b2ff7" stop-opacity="0"/>
+          </radialGradient>
+
+          <!-- Shine gradient -->
+          <linearGradient id="gradShine" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#ffffff" stop-opacity="0"/>
+            <stop offset="50%" stop-color="#ffffff" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+          </linearGradient>
+
+          <!-- Filter glow -->
+          <filter id="glowFilter" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feMerge>
+              <feMergeNode in="blur"/>
+              <feMergeNode in="SourceGraphic"/>
+            </feMerge>
+          </filter>
+
+          <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="6"/>
+          </filter>
+        </defs>
+
+        <!-- Background glow besar -->
+        <circle cx="120" cy="120" r="110" fill="url(#gradGlow)"
+                filter="url(#softGlow)" opacity="0.6"/>
+
+        <!-- Ring luar 1: garis putus-putus berputar -->
+        <g>
+          <circle cx="120" cy="120" r="105" fill="none"
+                  stroke="url(#gradMain)" stroke-width="2"
+                  stroke-dasharray="8 12" opacity="0.8"/>
+          <animateTransform attributeName="transform" type="rotate"
+                            from="0 120 120" to="360 120 120"
+                            dur="25s" repeatCount="indefinite"/>
+        </g>
+
+        <!-- Ring luar 2: ring tipis berputar berlawanan -->
+        <g>
+          <circle cx="120" cy="120" r="98" fill="none"
+                  stroke="url(#gradGold)" stroke-width="1" opacity="0.5"/>
+          <animateTransform attributeName="transform" type="rotate"
+                            from="360 120 120" to="0 120 120"
+                            dur="15s" repeatCount="indefinite"/>
+        </g>
+
+        <!-- Shield/tameng utama -->
+        <path d="M 120 35
+                 L 175 55
+                 L 175 115
+                 Q 175 165 120 195
+                 Q 65 165 65 115
+                 L 65 55 Z"
+              fill="url(#gradMain)" opacity="0.12"
+              stroke="url(#gradMain)" stroke-width="2.5"
+              filter="url(#glowFilter)"/>
+
+        <!-- Shield inner glow -->
+        <path d="M 120 45
+                 L 165 62
+                 L 165 115
+                 Q 165 155 120 182
+                 Q 75 155 75 115
+                 L 75 62 Z"
+              fill="none"
+              stroke="url(#gradGold)" stroke-width="1.5"
+              opacity="0.7"/>
+
+        <!-- Bintang emas atas -->
+        <g transform="translate(120, 55)">
+          <path d="M 0 -12 L 3.5 -4 L 12 -4 L 5 2 L 7.5 10 L 0 5 L -7.5 10 L -5 2 L -12 -4 L -3.5 -4 Z"
+                fill="url(#gradGold)" filter="url(#glowFilter)">
+            <animateTransform attributeName="transform" type="rotate"
+                              from="0" to="360"
+                              dur="8s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values="1;0.6;1" dur="2s" repeatCount="indefinite"/>
+          </path>
+        </g>
+
+        <!-- Tulisan VII (besar, atas) -->
+        <text x="120" y="120" text-anchor="middle"
+              font-family="'Space Grotesk', 'Outfit', sans-serif"
+              font-size="46" font-weight="700" letter-spacing="-2"
+              fill="url(#gradText1)" filter="url(#glowFilter)"
+              dominant-baseline="middle">
+          VII
+        </text>
+
+        <!-- Garis pemisah -->
+        <line x1="80" y1="145" x2="160" y2="145"
+              stroke="url(#gradGold)" stroke-width="1.5" opacity="0.6"/>
+
+        <!-- Tulisan C (bawah) -->
+        <text x="120" y="170" text-anchor="middle"
+              font-family="'Space Grotesk', 'Outfit', sans-serif"
+              font-size="42" font-weight="700" letter-spacing="-1"
+              fill="url(#gradText2)" filter="url(#glowFilter)"
+              dominant-baseline="middle">
+          C
+        </text>
+
+        <!-- Titik-titik dekoratif sekitar shield -->
+        <circle cx="120" cy="25" r="3" fill="#00f0ff">
+          <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="120" cy="215" r="3" fill="#ff00e5">
+          <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" begin="0.5s"/>
+        </circle>
+        <circle cx="30" cy="120" r="3" fill="#ffd700">
+          <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" begin="1s"/>
+        </circle>
+        <circle cx="210" cy="120" r="3" fill="#7b2ff7">
+          <animate attributeName="opacity" values="1;0.3;1" dur="1.5s" repeatCount="indefinite" begin="1.5s"/>
+        </circle>
+
+        <!-- Shine melintas -->
+        <rect x="0" y="0" width="60" height="240"
+              fill="url(#gradShine)" opacity="0" class="shine-path"
+              style="mix-blend-mode: overlay;"/>
+      </svg>
+    `;
+
+    // Sisipkan setelah badge
+    badge.parentNode.insertBefore(logo, badge.nextSibling);
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: LOGO DARI GAMBAR + ANIMASI ===== -->
+<style>
+  /* Container logo */
+  .hero-logo {
+    width: clamp(140px, 28vw, 200px);
+    height: clamp(140px, 28vw, 200px);
+    margin: 0 auto 30px;
+    display: block;
+    position: relative;
+    animation: logoFloat 4s ease-in-out infinite;
+    filter:
+      drop-shadow(0 0 30px rgba(0, 240, 255, 0.7))
+      drop-shadow(0 0 60px rgba(123, 47, 247, 0.5))
+      drop-shadow(0 10px 20px rgba(0, 0, 0, 0.4));
+  }
+
+  /* Partikel orbit mengelilingi logo */
+  .hero-logo::before,
+  .hero-logo::after {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 50% 0%, #00f0ff 0%, transparent 3%),
+      radial-gradient(circle at 100% 50%, #ff00e5 0%, transparent 3%),
+      radial-gradient(circle at 50% 100%, #ffd700 0%, transparent 3%),
+      radial-gradient(circle at 0% 50%, #7b2ff7 0%, transparent 3%);
+    animation: orbitParticle 8s linear infinite;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .hero-logo::after {
+    inset: -20px;
+    animation: orbitParticle 12s linear infinite reverse;
+    background:
+      radial-gradient(circle at 25% 25%, #00f0ff 0%, transparent 2%),
+      radial-gradient(circle at 75% 75%, #ff00e5 0%, transparent 2%);
+  }
+
+  /* Gambar logo */
+  .hero-logo .logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 24px;
+    position: relative;
+    z-index: 2;
+    animation: logoPulse 3s ease-in-out infinite;
+  }
+
+  /* Ring berputar mengelilingi logo */
+  .hero-logo .logo-ring {
+    position: absolute;
+    inset: -14px;
+    border-radius: 50%;
+    border: 2px dashed rgba(0, 240, 255, 0.5);
+    animation: orbitParticle 18s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-logo .logo-ring.inner {
+    inset: -6px;
+    border: 1.5px solid rgba(255, 215, 0, 0.4);
+    animation: orbitParticle 12s linear infinite reverse;
+  }
+
+  /* Shine melintas */
+  .hero-logo .logo-shine {
+    position: absolute;
+    inset: 0;
+    border-radius: 24px;
+    background: linear-gradient(120deg,
+      transparent 30%,
+      rgba(255,255,255,0.5) 50%,
+      transparent 70%);
+    background-size: 200% 100%;
+    animation: shineSweep 3s ease-in-out infinite;
+    z-index: 4;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  @keyframes logoFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-12px) scale(1.03); }
+  }
+  @keyframes logoPulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.15); }
+  }
+  @keyframes orbitParticle {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes shineSweep {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-logo { margin-bottom: 22px; }
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Hapus logo lama (SVG kalau ada)
+    document.querySelectorAll('.hero-logo').forEach(el => el.remove());
+
+    const badge = document.querySelector('.badge');
+    if (!badge) return;
+
+    // Buat logo baru dari gambar
+    const logo = document.createElement('div');
+    logo.className = 'hero-logo';
+    logo.innerHTML = `
+      <div class="logo-ring"></div>
+      <div class="logo-ring inner"></div>
+      <img class="logo-img"
+           src="https://cdn.phototourl.com/member/2026-10-13-f1617594-3f56-479b-a2d2-5e3abae50686.jpg"
+           alt="Logo Class VII C"
+           onerror="this.style.display='none'">
+      <div class="logo-shine"></div>
+    `;
+
+    // Sisipkan setelah badge
+    badge.parentNode.insertBefore(logo, badge.nextSibling);
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: LOGO TANPA BACKGROUND ===== -->
+<style>
+  .hero-logo {
+    width: clamp(140px, 28vw, 200px);
+    height: clamp(140px, 28vw, 200px);
+    margin: 0 auto 30px;
+    display: block;
+    position: relative;
+    animation: logoFloat 4s ease-in-out infinite;
+    filter:
+      drop-shadow(0 0 30px rgba(0, 240, 255, 0.7))
+      drop-shadow(0 0 60px rgba(123, 47, 247, 0.5));
+  }
+
+  /* Partikel orbit */
+  .hero-logo::before,
+  .hero-logo::after {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 50% 0%, #00f0ff 0%, transparent 3%),
+      radial-gradient(circle at 100% 50%, #ff00e5 0%, transparent 3%),
+      radial-gradient(circle at 50% 100%, #ffd700 0%, transparent 3%),
+      radial-gradient(circle at 0% 50%, #7b2ff7 0%, transparent 3%);
+    animation: orbitParticle 8s linear infinite;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .hero-logo::after {
+    inset: -20px;
+    animation: orbitParticle 12s linear infinite reverse;
+    background:
+      radial-gradient(circle at 25% 25%, #00f0ff 0%, transparent 2%),
+      radial-gradient(circle at 75% 75%, #ff00e5 0%, transparent 2%);
+  }
+
+  /* GAMBAR LOGO — TANPA background, border, atau kotak */
+  .hero-logo .logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: transparent !important;
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    position: relative;
+    z-index: 2;
+    animation: logoPulse 3s ease-in-out infinite;
+    /* Hapus background putih pada gambar JPG dengan blend mode */
+    mix-blend-mode: screen;
+  }
+
+  /* Ring berputar */
+  .hero-logo .logo-ring {
+    position: absolute;
+    inset: -14px;
+    border-radius: 50%;
+    border: 2px dashed rgba(0, 240, 255, 0.5);
+    animation: orbitParticle 18s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-logo .logo-ring.inner {
+    inset: -6px;
+    border: 1.5px solid rgba(255, 215, 0, 0.4);
+    animation: orbitParticle 12s linear infinite reverse;
+  }
+
+  /* Shine */
+  .hero-logo .logo-shine {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(120deg,
+      transparent 30%,
+      rgba(255,255,255,0.4) 50%,
+      transparent 70%);
+    background-size: 200% 100%;
+    animation: shineSweep 3s ease-in-out infinite;
+    z-index: 4;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  @keyframes logoFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-12px) scale(1.03); }
+  }
+  @keyframes logoPulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+  }
+  @keyframes orbitParticle {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes shineSweep {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-logo { margin-bottom: 22px; }
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Hapus logo lama
+    document.querySelectorAll('.hero-logo').forEach(el => el.remove());
+
+    const badge = document.querySelector('.badge');
+    if (!badge) return;
+
+    const logo = document.createElement('div');
+    logo.className = 'hero-logo';
+    logo.innerHTML = `
+      <div class="logo-ring"></div>
+      <div class="logo-ring inner"></div>
+      <img class="logo-img"
+           src="https://cdn.phototourl.com/member/2026-10-13-f1617594-3f56-479b-a2d2-5e3abae50686.jpg"
+           alt="Logo Class VII C">
+      <div class="logo-shine"></div>
+    `;
+
+    badge.parentNode.insertBefore(logo, badge.nextSibling);
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: LOGO PNG BARU + ANIMASI ===== -->
+<style>
+  .hero-logo {
+    width: clamp(150px, 30vw, 220px);
+    height: clamp(150px, 30vw, 220px);
+    margin: 0 auto 30px;
+    display: block;
+    position: relative;
+    animation: logoFloat 4s ease-in-out infinite;
+    filter:
+      drop-shadow(0 0 30px rgba(0, 240, 255, 0.7))
+      drop-shadow(0 0 60px rgba(123, 47, 247, 0.5));
+  }
+
+  /* Partikel orbit */
+  .hero-logo::before,
+  .hero-logo::after {
+    content: "";
+    position: absolute;
+    inset: -10px;
+    border-radius: 50%;
+    background:
+      radial-gradient(circle at 50% 0%, #00f0ff 0%, transparent 3%),
+      radial-gradient(circle at 100% 50%, #ff00e5 0%, transparent 3%),
+      radial-gradient(circle at 50% 100%, #ffd700 0%, transparent 3%),
+      radial-gradient(circle at 0% 50%, #7b2ff7 0%, transparent 3%);
+    animation: orbitParticle 8s linear infinite;
+    z-index: 3;
+    pointer-events: none;
+  }
+  .hero-logo::after {
+    inset: -20px;
+    animation: orbitParticle 12s linear infinite reverse;
+    background:
+      radial-gradient(circle at 25% 25%, #00f0ff 0%, transparent 2%),
+      radial-gradient(circle at 75% 75%, #ff00e5 0%, transparent 2%);
+  }
+
+  /* GAMBAR LOGO — full bersih tanpa background */
+  .hero-logo .logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    position: relative;
+    z-index: 2;
+    animation: logoPulse 3s ease-in-out infinite;
+  }
+
+  /* Ring berputar */
+  .hero-logo .logo-ring {
+    position: absolute;
+    inset: -14px;
+    border-radius: 50%;
+    border: 2px dashed rgba(0, 240, 255, 0.5);
+    animation: orbitParticle 18s linear infinite;
+    z-index: 1;
+    pointer-events: none;
+  }
+  .hero-logo .logo-ring.inner {
+    inset: -6px;
+    border: 1.5px solid rgba(255, 215, 0, 0.4);
+    animation: orbitParticle 12s linear infinite reverse;
+  }
+
+  /* Shine melintas */
+  .hero-logo .logo-shine {
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(120deg,
+      transparent 30%,
+      rgba(255,255,255,0.45) 50%,
+      transparent 70%);
+    background-size: 200% 100%;
+    animation: shineSweep 3s ease-in-out infinite;
+    z-index: 4;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+  }
+
+  @keyframes logoFloat {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-12px) scale(1.03); }
+  }
+  @keyframes logoPulse {
+    0%, 100% { filter: brightness(1); }
+    50% { filter: brightness(1.2); }
+  }
+  @keyframes orbitParticle {
+    to { transform: rotate(360deg); }
+  }
+  @keyframes shineSweep {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-logo { margin-bottom: 22px; }
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Hapus logo lama
+    document.querySelectorAll('.hero-logo').forEach(el => el.remove());
+
+    const badge = document.querySelector('.badge');
+    if (!badge) return;
+
+    const logo = document.createElement('div');
+    logo.className = 'hero-logo';
+    logo.innerHTML = `
+      <div class="logo-ring"></div>
+      <div class="logo-ring inner"></div>
+      <img class="logo-img"
+           src="https://cdn.phototourl.com/member/2026-10-13-e166e01d-7a25-46dd-8c78-793f4cec4c09.png"
+           alt="Logo Class VII C"
+           onerror="this.style.display='none'">
+      <div class="logo-shine"></div>
+    `;
+
+    badge.parentNode.insertBefore(logo, badge.nextSibling);
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: SUARA BACKGROUND DARI VIDEO ===== -->
+<audio id="bgMusic" loop preload="auto" style="display:none;">
+  <source src="https://www.image2url.com/r2/default/videos/1791876956330-dcd3a0f4-42eb-4e93-9402-c7eaf78efa9a.mp4" type="audio/mp4">
+  <source src="https://www.image2url.com/r2/default/videos/1791876956330-dcd3a0f4-42eb-4e93-9402-c7eaf78efa9a.mp4" type="video/mp4">
+</audio>
+
+<style>
+  /* Tombol kontrol suara (mute/unmute) */
+  #soundControl {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: rgba(10, 5, 30, 0.75);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    color: #00f0ff;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9998;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(0, 240, 255, 0.3);
+  }
+  #soundControl:hover {
+    transform: scale(1.1);
+    border-color: rgba(0, 240, 255, 0.8);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6),
+                0 0 30px rgba(0, 240, 255, 0.6);
+  }
+  #soundControl.muted {
+    color: rgba(255, 255, 255, 0.5);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  #soundControl i {
+    filter: drop-shadow(0 0 8px rgba(0, 240, 255, 0.8));
+  }
+  #soundControl.muted i {
+    filter: none;
+  }
+
+  /* Animasi pulse saat musik baru mulai */
+  @keyframes soundPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+  }
+  #soundControl.pulse {
+    animation: soundPulse 1.5s ease-in-out 3;
+  }
+
+  @media (max-width: 600px) {
+    #soundControl {
+      width: 44px;
+      height: 44px;
+      bottom: 14px;
+      left: 14px;
+      font-size: 1rem;
+    }
+  }
+</style>
+
+<!-- Tombol kontrol suara -->
+<button id="soundControl" aria-label="Toggle Sound">
+  <i class="fa-solid fa-volume-high"></i>
+</button>
+
+<script>
+  (function() {
+    const music = document.getElementById('bgMusic');
+    const btn = document.getElementById('soundControl');
+    if (!music || !btn) return;
+
+    // Set volume rendah biar tidak mengganggu
+    music.volume = 0.4;
+
+    let isPlaying = false;
+    let userInteracted = false;
+
+    // Fungsi putar musik
+    function playMusic() {
+      if (isPlaying) return;
+      music.play().then(() => {
+        isPlaying = true;
+        btn.classList.remove('muted');
+        btn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+        btn.classList.add('pulse');
+        setTimeout(() => btn.classList.remove('pulse'), 4500);
+      }).catch(err => {
+        console.log('Autoplay diblokir:', err);
+      });
+    }
+
+    // Fungsi pause
+    function pauseMusic() {
+      music.pause();
+      isPlaying = false;
+      btn.classList.add('muted');
+      btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+    }
+
+    // Coba autoplay saat halaman load
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        music.play().then(() => {
+          isPlaying = true;
+          btn.classList.remove('muted');
+          btn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+        }).catch(() => {
+          // Autoplay gagal — tunggu interaksi user
+          btn.classList.add('muted');
+          btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+        });
+      }, 3400); // Mulai setelah loading BAYU selesai
+    });
+
+    // Putar saat user pertama kali interaksi (klik/tap/scroll)
+    function onFirstInteraction() {
+      if (userInteracted) return;
+      userInteracted = true;
+      playMusic();
+      document.removeEventListener('click', onFirstInteraction);
+      document.removeEventListener('touchstart', onFirstInteraction);
+      document.removeEventListener('scroll', onFirstInteraction);
+      document.removeEventListener('keydown', onFirstInteraction);
+    }
+    document.addEventListener('click', onFirstInteraction);
+    document.addEventListener('touchstart', onFirstInteraction);
+    document.addEventListener('scroll', onFirstInteraction);
+    document.addEventListener('keydown', onFirstInteraction);
+
+    // Tombol toggle mute/unmute
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation(); // Biar tidak trigger onFirstInteraction dobel
+      if (isPlaying) {
+        pauseMusic();
+      } else {
+        playMusic();
+      }
+    });
+
+    // Kalau tab tidak aktif, pelankan volume
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        music.volume = 0.1;
+      } else if (isPlaying) {
+        music.volume = 0.4;
+      }
+    });
+  })();
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: AUTOPLAY SUARA OTOMATIS ===== -->
+<style>
+  /* Notifikasi kecil kalau autoplay butuh 1 klik */
+  #soundPrompt {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 12px 20px;
+    background: rgba(10, 5, 30, 0.9);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 240, 255, 0.5);
+    border-radius: 100px;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    z-index: 9999;
+    display: none;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5),
+                0 0 25px rgba(0,240,255,0.4);
+    animation: soundPromptPulse 2s ease-in-out infinite;
+    transition: all 0.3s;
+  }
+  #soundPrompt:hover {
+    border-color: rgba(0, 240, 255, 0.9);
+    transform: scale(1.05);
+  }
+  #soundPrompt i {
+    color: #00f0ff;
+    margin-right: 8px;
+    filter: drop-shadow(0 0 8px rgba(0,240,255,0.8));
+  }
+  @keyframes soundPromptPulse {
+    0%, 100% { box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 25px rgba(0,240,255,0.4); }
+    50% { box-shadow: 0 10px 30px rgba(0,0,0,0.5), 0 0 45px rgba(0,240,255,0.8); }
+  }
+
+  @media (max-width: 600px) {
+    #soundPrompt {
+      font-size: 0.75rem;
+      padding: 10px 16px;
+      bottom: 14px;
+      left: 14px;
+    }
+  }
+</style>
+
+<script>
+  (function() {
+    // Buat elemen audio
+    const music = document.createElement('audio');
+    music.id = 'bgMusic';
+    music.loop = true;
+    music.preload = 'auto';
+    music.volume = 0.5;
+    music.setAttribute('playsinline', '');
+    music.style.display = 'none';
+
+    const source = document.createElement('source');
+    source.src = 'https://www.image2url.com/r2/default/videos/1791876956330-dcd3a0f4-42eb-4e93-9402-c7eaf78efa9a.mp4';
+    source.type = 'audio/mp4';
+    music.appendChild(source);
+    document.body.appendChild(music);
+
+    // Notifikasi kalau autoplay butuh 1 klik
+    const prompt = document.createElement('div');
+    prompt.id = 'soundPrompt';
+    prompt.innerHTML = '<i class="fa-solid fa-volume-high"></i>Ketuk untuk menyalakan suara';
+    document.body.appendChild(prompt);
+
+    let isPlaying = false;
+
+    // ===== TRIK AUTOPLAY PALING AMPUH =====
+    // 1. Set mute dulu → play (browser izinkan karena tidak ada suara)
+    // 2. Setelah 1 detik, unmute (suara muncul)
+    function tryAutoplay() {
+      music.muted = true; // Mulai dalam keadaan mute
+      const playPromise = music.play();
+
+      if (playPromise !== undefined) {
+        playPromise.then(() => {
+          // Berhasil autoplay (dalam keadaan mute)
+          // Sekarang unmute secara bertahap
+          let vol = 0;
+          music.volume = 0;
+          music.muted = false;
+          isPlaying = true;
+
+          // Fade in volume biar smooth
+          const fadeIn = setInterval(() => {
+            vol += 0.05;
+            if (vol >= 0.5) {
+              vol = 0.5;
+              clearInterval(fadeIn);
+            }
+            music.volume = vol;
+          }, 100);
+
+        }).catch(() => {
+          // Autoplay gagal total → tampilkan prompt
+          prompt.style.display = 'inline-flex';
+        });
+      }
+    }
+
+    // Jalankan setelah loading BAYU selesai
+    window.addEventListener('load', () => {
+      setTimeout(tryAutoplay, 3400);
+    });
+
+    // Fallback: coba lagi saat user pertama kali sentuh/klik/scroll
+    function retryOnInteract() {
+      if (!isPlaying) {
+        music.muted = false;
+        music.play().then(() => {
+          isPlaying = true;
+          prompt.style.display = 'none';
+        }).catch(() => {});
+      }
+      document.removeEventListener('click', retryOnInteract);
+      document.removeEventListener('touchstart', retryOnInteract);
+      document.removeEventListener('scroll', retryOnInteract);
+      document.removeEventListener('keydown', retryOnInteract);
+    }
+    document.addEventListener('click', retryOnInteract);
+    document.addEventListener('touchstart', retryOnInteract);
+    document.addEventListener('scroll', retryOnInteract);
+    document.addEventListener('keydown', retryOnInteract);
+
+    // Kalau user klik notifikasi prompt
+    prompt.addEventListener('click', () => {
+      music.muted = false;
+      music.play().then(() => {
+        isPlaying = true;
+        prompt.style.display = 'none';
+      }).catch(() => {});
+    });
+
+  })();
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: KONTAK HANYA TIKTOK & WHATSAPP ===== -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const links = document.querySelector('.kontak-links');
+    if (!links) return;
+
+    // Ganti isi kontak-links
+    links.innerHTML = `
+      <a href="#" class="btn-3d">
+        <i class="fa-brands fa-tiktok"></i> TikTok
+      </a>
+      <a href="#" class="btn-3d">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+      </a>
+    `;
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: LINK TIKTOK GRUP ===== -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Cari tombol kontak
+    const links = document.querySelector('.kontak-links');
+    if (!links) return;
+
+    // Ganti isi dengan TikTok + WhatsApp
+    links.innerHTML = `
+      <a href="https://tiktok.me/group/ZSVxpTndQ/" 
+         class="btn-3d" 
+         target="_blank" 
+         rel="noopener noreferrer">
+        <i class="fa-brands fa-tiktok"></i> TikTok
+      </a>
+      <a href="#" 
+         class="btn-3d" 
+         target="_blank" 
+         rel="noopener noreferrer">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+      </a>
+    `;
+
+    // Highlight tombol TikTok saat pertama dilihat
+    const tiktokBtn = links.querySelector('a[href*="tiktok"]');
+    if (tiktokBtn) {
+      tiktokBtn.style.animation = 'tiktokPulse 2s ease-in-out infinite';
+    }
+  });
+</script>
+
+<style>
+  /* Animasi pulse khas TikTok */
+  @keyframes tiktokPulse {
+    0%, 100% {
+      box-shadow: 0 10px 30px rgba(0, 240, 255, 0.3),
+                  0 0 20px rgba(255, 0, 229, 0.3);
+    }
+    50% {
+      box-shadow: 0 15px 40px rgba(0, 240, 255, 0.6),
+                  0 0 40px rgba(255, 0, 229, 0.6);
+    }
+  }
+</style>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: GANTI WALI KELAS ===== -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Cari semua elemen di halaman
+    document.querySelectorAll('.glass-card p, .card-3d p').forEach(el => {
+      // Kalau isinya nama wali kelas lama, ganti
+      if (el.textContent.includes('Siti Rahmawati') || 
+          el.textContent.includes('Bu Siti')) {
+        el.textContent = 'Bu Maryati';
+      }
+    });
+
+    // Fallback: cari berdasarkan urutan kartu pertama (Wali Kelas)
+    const firstCard = document.querySelector('.glass-card p, .card-3d p');
+    if (firstCard && (firstCard.textContent.includes('Siti') || 
+                       firstCard.textContent.includes('Rahmawati'))) {
+      firstCard.textContent = 'Bu Maryati';
+    }
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: JUMLAH SISWA 40 ===== -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // ==== GANTI TEKS "32 SISWA" JADI "40 SISWA" ====
+    document.querySelectorAll('.glass-card p, .card-3d p').forEach(el => {
+      if (el.textContent.includes('32 Siswa') || 
+          el.textContent.includes('32 siswa')) {
+        el.textContent = '40 Siswa';
+      }
+    });
+
+    // ==== TAMBAH 8 SISWA BARU KE DAFTAR ====
+    const siswaBox = document.getElementById('daftarSiswa');
+    if (siswaBox) {
+      // Cek dulu jumlah siswa yang ada sekarang
+      const currentCount = siswaBox.children.length;
+      
+      if (currentCount < 40) {
+        // Data 8 siswa tambahan
+        const siswaBaru = [
+          "Rendi Kurniawan",
+          "Salsa Nabila",
+          "Yusuf Maulana",
+          "Tiara Ananda",
+          "Rafi Akbar",
+          "Nadia Safitri",
+          "Gilang Ramadhan",
+          "Ayu Lestari"
+        ];
+        
+        // Hitung sisa yang perlu ditambah
+        const needed = 40 - currentCount;
+        
+        // Tambah siswa baru
+        for (let i = 0; i < needed && i < siswaBaru.length; i++) {
+          const d = document.createElement('div');
+          d.className = 'siswa';
+          d.innerHTML = `
+            <div class="siswa-name">${siswaBaru[i]}</div>
+            <div class="siswa-num">Absen ${String(currentCount + i + 1).padStart(2, '0')}</div>
+          `;
+          siswaBox.appendChild(d);
+        }
+      }
+    }
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: GANTI PENGURUS KELAS ===== -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Data pengurus kelas baru
+    const pengurusBaru = {
+      'Ketua Kelas': 'Muhammad Daffa',
+      'Wakil Ketua': 'Nengsih',
+      'Sekretaris': 'Reva, Feriska',
+      'Bendahara': 'Arnela, Haura'
+    };
+
+    // Ambil semua kartu profil
+    const cards = document.querySelectorAll('.glass-card, .card-3d');
+    
+    cards.forEach(card => {
+      const h3 = card.querySelector('h3');
+      const p = card.querySelector('p');
+      
+      if (h3 && p) {
+        const label = h3.textContent.trim();
+        
+        // Cek apakah label cocok dengan pengurus baru
+        for (const [key, value] of Object.entries(pengurusBaru)) {
+          if (label.includes(key) || label.toLowerCase().includes(key.toLowerCase())) {
+            p.textContent = value;
+            break;
+          }
+        }
+      }
+    });
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: DAFTAR 40 SISWA LENGKAP ===== -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Daftar 40 siswa sesuai absen
+    const daftarSiswa = [
+      "Abil Danuari",              // 01
+      "Arnela",                    // 02
+      "Alika Inova",               // 03
+      "Ahmad Alif",                // 04
+      "Ahmad Norohman",            // 05
+      "Aidil Syah",                // 06
+      "Amanu",                     // 07
+      "Arjun Irawan",              // 08
+      "Bayu Denis Saputra",        // 09
+      "Destri Restiyani",          // 10
+      "Deyren Harbiansyah",        // 11
+      "Faaiz Zainul Abidin",       // 12
+      "Fajar",                     // 13
+      "Feriska",                   // 14
+      "Haura Nazhifa",             // 15
+      "Jafar Sidik",               // 16
+      "Jihan Okta Piya",           // 17
+      "Liyana Ramadani",           // 18
+      "Mahari",                    // 19
+      "Marta Wijaya",              // 20
+      "Muhamad Daffa",             // 21
+      "Muhammad Fiqih Maulidin",   // 22
+      "Muhammad Rafahel",          // 23
+      "Muhammad A Zikra Alfiansyah", // 24
+      "Muhammad Haikal Asrori",    // 25
+      "Muhammad Khoirul Umam",     // 26
+      "Muhammad Nur Farizki",      // 27
+      "Muhamad Keysha",            // 28
+      "Nengsih",                   // 29
+      "Pipit Fitriyani",           // 30
+      "Rahkmat Hidayat",           // 31
+      "Reva Yu Liana Ashanti",     // 32
+      "Reza Noval",                // 33
+      "Saepudin",                  // 34
+      "Selvia Septiandi",          // 35
+      "Silviyana Putri",           // 36
+      "Siti Salsa Bila",           // 37
+      "Ubaydilah Agisha",          // 38
+      "Vania Nayla Talita",        // 39
+      "Wandi"                      // 40
+    ];
+
+    // Cari container daftar siswa
+    const siswaBox = document.getElementById('daftarSiswa');
+    if (!siswaBox) return;
+
+    // Kosongkan dulu
+    siswaBox.innerHTML = '';
+
+    // Isi ulang dengan 40 siswa baru
+    daftarSiswa.forEach((nama, i) => {
+      const d = document.createElement('div');
+      d.className = 'siswa';
+      d.innerHTML = `
+        <div class="siswa-name">${nama}</div>
+        <div class="siswa-num">Absen ${String(i + 1).padStart(2, '0')}</div>
+      `;
+      siswaBox.appendChild(d);
+    });
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: GANTI VII C JADI 7C ===== -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Ganti di seluruh teks halaman
+    document.querySelectorAll('h1, h2, h3, p, span, div, a, title, footer').forEach(el => {
+      // Skip kalau elemen punya child elements (biar tidak rusak struktur)
+      if (el.children.length > 0) return;
+      
+      if (el.textContent.includes('VII C')) {
+        el.textContent = el.textContent.replace(/VII C/g, '7C');
+      }
+      if (el.textContent.includes('VII C')) {
+        el.textContent = el.textContent.replace(/VII C/g, '7C');
+      }
+      if (el.textContent.includes('VII C')) {
+        el.textContent = el.textContent.replace(/VII C/g, '7C');
+      }
+    });
+
+    // Ganti judul tab browser
+    document.title = document.title.replace(/VII C/g, '7C');
+
+    // Ganti khusus di hero title (yang dipecah per huruf <span>)
+    const heroTitle = document.querySelector('.hero-title');
+    if (heroTitle) {
+      heroTitle.innerHTML = '7C';
+      heroTitle.style.letterSpacing = '-0.05em';
+    }
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: AUTOPLAY PAKSA TANPA KLIK ===== -->
+<script>
+  (function() {
+    // Tunggu DOM siap
+    function init() {
+      // Cari / buat elemen audio
+      let music = document.getElementById('bgMusic');
+      if (!music) {
+        music = document.createElement('audio');
+        music.id = 'bgMusic';
+        music.loop = true;
+        music.preload = 'auto';
+        music.setAttribute('playsinline', '');
+        music.style.display = 'none';
+
+        const source = document.createElement('source');
+        source.src = 'https://www.image2url.com/r2/default/videos/1791876956330-dcd3a0f4-42eb-4e93-9402-c7eaf78efa9a.mp4';
+        source.type = 'audio/mp4';
+        music.appendChild(source);
+        document.body.appendChild(music);
+      }
+
+      music.volume = 0.5;
+      music.muted = false;
+
+      // Sembunyikan notifikasi prompt (kalau ada)
+      const prompt = document.getElementById('soundPrompt');
+      if (prompt) prompt.style.display = 'none';
+
+      let isPlaying = false;
+
+      // ===== TRIK 1: MUTE → PLAY → UNMUTE =====
+      function forceAutoplay() {
+        if (isPlaying) return;
+
+        music.muted = true;
+        const promise = music.play();
+
+        if (promise !== undefined) {
+          promise.then(() => {
+            // Berhasil play (dalam keadaan mute) → unmute
+            music.muted = false;
+            isPlaying = true;
+            // Update tombol kontrol
+            const btn = document.getElementById('soundControl');
+            if (btn) {
+              btn.classList.remove('muted');
+              btn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+            }
+          }).catch(() => {
+            // Gagal → coba lagi nanti
+          });
+        } else {
+          // Browser lama tanpa Promise
+          music.muted = false;
+          isPlaying = true;
+        }
+      }
+
+      // Jalankan langsung saat halaman siap (setelah loading BAYU)
+      setTimeout(forceAutoplay, 3300);
+      setTimeout(forceAutoplay, 3400);
+      setTimeout(forceAutoplay, 3600);
+
+      // ===== TRIK 2: RETRY BERKALA =====
+      const retryInterval = setInterval(() => {
+        if (isPlaying) {
+          clearInterval(retryInterval);
+          return;
+        }
+        forceAutoplay();
+      }, 800);
+
+      // Hentikan retry setelah 30 detik (biar tidak spam)
+      setTimeout(() => clearInterval(retryInterval), 30000);
+
+      // ===== TRIK 3: TRIGGER DARI EVENT APA PUN =====
+      const events = ['click', 'touchstart', 'touchend', 'scroll', 
+                      'mousemove', 'keydown', 'wheel', 'pointerdown'];
+      
+      function onAnyEvent() {
+        if (isPlaying) {
+          // Kalau sudah playing, hapus semua listener
+          events.forEach(ev => document.removeEventListener(ev, onAnyEvent));
+          return;
+        }
+        forceAutoplay();
+      }
+
+      events.forEach(ev => {
+        document.addEventListener(ev, onAnyEvent, { passive: true });
+      });
+
+      // Hapus listener setelah 60 detik
+      setTimeout(() => {
+        events.forEach(ev => document.removeEventListener(ev, onAnyEvent));
+      }, 60000);
+
+      // ===== TRIK 4: SIMPAN STATUS DI LOCALSTORAGE =====
+      // Kalau user pernah buka & suara hidup, langsung play
+      try {
+        const soundEnabled = localStorage.getItem('bgMusicEnabled');
+        if (soundEnabled === 'true') {
+          // Langsung coba mainkan
+          setTimeout(forceAutoplay, 100);
+        }
+      } catch(e) {}
+
+      // Simpan status kalau berhasil play
+      const saveInterval = setInterval(() => {
+        if (isPlaying) {
+          try { localStorage.setItem('bgMusicEnabled', 'true'); } catch(e) {}
+          clearInterval(saveInterval);
+        }
+      }, 1000);
+
+      // ===== TRIK 5: PAUSE SAAT TAB TIDAK AKTIF =====
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) {
+          if (isPlaying) music.volume = 0.1;
+        } else if (isPlaying) {
+          music.volume = 0.5;
+        }
+      });
+
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: SUARA SIMPLE (KLIK UNTUK NYALAIN) ===== -->
+<audio id="bgMusic" loop preload="auto" style="display:none;">
+  <source src="https://www.image2url.com/r2/default/videos/1791876956330-dcd3a0f4-42eb-4e93-9402-c7eaf78efa9a.mp4" type="audio/mp4">
+  <source src="https://www.image2url.com/r2/default/videos/1791876956330-dcd3a0f4-42eb-4e93-9402-c7eaf78efa9a.mp4" type="video/mp4">
+</audio>
+
+<style>
+  /* Tombol suara di kiri bawah */
+  #soundControl {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(10, 5, 30, 0.8);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 240, 255, 0.5);
+    color: #00f0ff;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5),
+                0 0 20px rgba(0, 240, 255, 0.4);
+    animation: soundPulse 2s ease-in-out infinite;
+  }
+  #soundControl:hover {
+    transform: scale(1.1);
+    border-color: rgba(0, 240, 255, 0.9);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6),
+                0 0 35px rgba(0, 240, 255, 0.8);
+  }
+  #soundControl.playing {
+    color: #ff00e5;
+    border-color: rgba(255, 0, 229, 0.6);
+    animation: none;
+  }
+  #soundControl.playing:hover {
+    border-color: rgba(255, 0, 229, 0.9);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6),
+                0 0 35px rgba(255, 0, 229, 0.8);
+  }
+  #soundControl i {
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+
+  @keyframes soundPulse {
+    0%, 100% {
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5),
+                  0 0 20px rgba(0, 240, 255, 0.4);
+    }
+    50% {
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5),
+                  0 0 40px rgba(0, 240, 255, 0.8);
+    }
+  }
+
+  /* Tooltip kecil di atas tombol */
+  #soundControl::after {
+    content: "Nyalakan suara";
+    position: absolute;
+    bottom: 62px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(10, 5, 30, 0.95);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.75rem;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+  }
+  #soundControl:hover::after {
+    opacity: 1;
+  }
+  #soundControl.playing::after {
+    content: "Matikan suara";
+    border-color: rgba(255, 0, 229, 0.3);
+  }
+
+  @media (max-width: 600px) {
+    #soundControl {
+      width: 46px;
+      height: 46px;
+      font-size: 1rem;
+      bottom: 14px;
+      left: 14px;
+    }
+    #soundControl::after {
+      display: none;
+    }
+  }
+</style>
+
+<!-- Tombol kontrol suara -->
+<button id="soundControl" aria-label="Toggle Sound">
+  <i class="fa-solid fa-volume-xmark"></i>
+</button>
+
+<script>
+  (function() {
+    function init() {
+      const music = document.getElementById('bgMusic');
+      const btn = document.getElementById('soundControl');
+      if (!music || !btn) return;
+
+      music.volume = 0.5;
+      let isPlaying = false;
+
+      // Set volume rendah biar gak ngagetin
+      btn.addEventListener('click', () => {
+        if (!isPlaying) {
+          // Nyalakan
+          music.play().then(() => {
+            isPlaying = true;
+            btn.classList.add('playing');
+            btn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+          }).catch(err => {
+            console.log('Gagal play:', err);
+          });
+        } else {
+          // Matikan
+          music.pause();
+          isPlaying = false;
+          btn.classList.remove('playing');
+          btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+        }
+      });
+
+      // Pelankan volume saat tab tidak aktif
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden && isPlaying) {
+          music.volume = 0.1;
+        } else if (!document.hidden && isPlaying) {
+          music.volume = 0.5;
+        }
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH SUARA FINAL (AUTO-REPLACE) ===== -->
+<style>
+  #soundControl {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: rgba(10, 5, 30, 0.85);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 240, 255, 0.5);
+    color: #00f0ff;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 9999;
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 240, 255, 0.4);
+    animation: soundPulse 2s ease-in-out infinite;
+  }
+  #soundControl:hover {
+    transform: scale(1.1);
+    border-color: rgba(0, 240, 255, 0.9);
+  }
+  #soundControl.playing {
+    color: #ff00e5;
+    border-color: rgba(255, 0, 229, 0.6);
+    animation: none;
+  }
+  #soundControl.error {
+    color: #ff4444;
+    border-color: rgba(255, 68, 68, 0.8);
+    animation: none;
+  }
+  #soundControl i {
+    filter: drop-shadow(0 0 8px currentColor);
+  }
+  @keyframes soundPulse {
+    0%, 100% { box-shadow: 0 8px 25px rgba(0,0,0,.5), 0 0 20px rgba(0,240,255,.4); }
+    50% { box-shadow: 0 8px 25px rgba(0,0,0,.5), 0 0 40px rgba(0,240,255,.8); }
+  }
+  #soundStatus {
+    position: fixed;
+    bottom: 20px;
+    left: 85px;
+    padding: 10px 18px;
+    background: rgba(10, 5, 30, 0.9);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 240, 255, 0.4);
+    border-radius: 100px;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    z-index: 9999;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.4s;
+    pointer-events: none;
+    max-width: 220px;
+  }
+  #soundStatus.show {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  #soundStatus.error {
+    border-color: rgba(255, 68, 68, 0.6);
+    color: #ff8888;
+  }
+  @media (max-width: 600px) {
+    #soundControl { width: 46px; height: 46px; font-size: 1rem; bottom: 14px; left: 14px; }
+    #soundStatus { left: 70px; bottom: 14px; font-size: 0.7rem; }
+  }
+</style>
+
+<script>
+  (function() {
+    function init() {
+      // ===== 1. HAPUS SEMUA ELEMEN SUARA LAMA =====
+      // Hapus audio lama
+      document.querySelectorAll('audio').forEach(a => a.remove());
+      // Hapus tombol suara lama
+      document.querySelectorAll('#soundControl').forEach(b => b.remove());
+      // Hapus status lama
+      document.querySelectorAll('#soundStatus, #soundPrompt').forEach(b => b.remove());
+
+      // ===== 2. BUAT AUDIO BARU =====
+      const music = document.createElement('audio');
+      music.id = 'bgMusic';
+      music.loop = true;
+      music.preload = 'auto';
+      music.setAttribute('playsinline', '');
+      music.style.display = 'none';
+      music.innerHTML = `
+        <source src="https://www.image2url.com/r2/default/videos/1791876956330-dcd3a0f4-42eb-4e93-9402-c7eaf78efa9a.mp4" type="audio/mp4">
+        <source src="https://www.image2url.com/r2/default/videos/1791876956330-dcd3a0f4-42eb-4e93-9402-c7eaf78efa9a.mp4" type="video/mp4">
+      `;
+      document.body.appendChild(music);
+
+      // ===== 3. BUAT TOMBOL & STATUS BARU =====
+      const btn = document.createElement('button');
+      btn.id = 'soundControl';
+      btn.setAttribute('aria-label', 'Toggle Sound');
+      btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+      document.body.appendChild(btn);
+
+      const status = document.createElement('div');
+      status.id = 'soundStatus';
+      document.body.appendChild(status);
+
+      music.volume = 0.5;
+      let isPlaying = false;
+
+      function showStatus(msg, isError) {
+        status.textContent = msg;
+        status.classList.add('show');
+        if (isError) status.classList.add('error');
+        else status.classList.remove('error');
+        setTimeout(() => status.classList.remove('show'), 3000);
+      }
+
+      // ===== 4. DETEKSI ERROR AUDIO =====
+      music.addEventListener('error', () => {
+        btn.classList.add('error');
+        btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
+        showStatus('⚠️ File audio tidak dapat dimuat', true);
+        console.error('❌ Audio error - link kemungkinan mati atau diblokir');
+      });
+
+      music.addEventListener('canplaythrough', () => {
+        console.log('✅ Audio siap diputar');
+        btn.classList.remove('error');
+      });
+
+      // ===== 5. KLIK TOMBOL =====
+      btn.addEventListener('click', () => {
+        if (!isPlaying) {
+          const p = music.play();
+          if (p !== undefined) {
+            p.then(() => {
+              isPlaying = true;
+              btn.classList.add('playing');
+              btn.classList.remove('error');
+              btn.innerHTML = '<i class="fa-solid fa-volume-high"></i>';
+              showStatus('🎵 Suara dinyalakan', false);
+            }).catch(err => {
+              console.error('❌ Gagal play:', err);
+              btn.classList.add('error');
+              btn.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i>';
+              showStatus('⚠️ Gagal memutar audio', true);
+            });
+          }
+        } else {
+          music.pause();
+          isPlaying = false;
+          btn.classList.remove('playing');
+          btn.innerHTML = '<i class="fa-solid fa-volume-xmark"></i>';
+          showStatus('🔇 Suara dimatikan', false);
+        }
+      });
+
+      // ===== 6. PELANKAN SAAT TAB TIDAK AKTIF =====
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden && isPlaying) music.volume = 0.1;
+        else if (!document.hidden && isPlaying) music.volume = 0.5;
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>
+<!-- ===== END PATCH SUARA FINAL ===== -->
+  <!-- ===== PATCH: FOTO DI SAMPING KIRI MTS AL ANWAR ===== -->
+<style>
+  /* Bungkus hero-sub biar bisa sejajar dengan foto */
+  .hero-sub-wrapper {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 16px;
+    animation: slideUp 1s cubic-bezier(0.2, 0.9, 0.3, 1.2) 0.5s both;
+  }
+
+  /* Foto logo sekolah */
+  .school-photo {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(0, 240, 255, 0.6);
+    box-shadow:
+      0 0 15px rgba(0, 240, 255, 0.6),
+      0 0 30px rgba(123, 47, 247, 0.4);
+    transition: all 0.4s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+    background: #fff;
+    flex-shrink: 0;
+  }
+  .school-photo:hover {
+    transform: scale(1.15) rotate(-5deg);
+    box-shadow:
+      0 0 25px rgba(0, 240, 255, 0.9),
+      0 0 50px rgba(255, 0, 229, 0.6);
+    border-color: rgba(255, 0, 229, 0.8);
+  }
+
+  /* Teks MTS AL ANWAR */
+  .hero-sub-wrapper .hero-sub {
+    margin: 0 !important;
+    animation: none !important;
+  }
+
+  @media (max-width: 600px) {
+    .school-photo {
+      width: 36px;
+      height: 36px;
+    }
+    .hero-sub-wrapper {
+      gap: 10px;
+    }
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const heroSub = document.querySelector('.hero-sub');
+    if (!heroSub) return;
+
+    // Cek apakah sudah ada wrapper (biar ga dobel)
+    if (heroSub.parentElement.classList.contains('hero-sub-wrapper')) return;
+
+    // Buat wrapper
+    const wrapper = document.createElement('div');
+    wrapper.className = 'hero-sub-wrapper';
+
+    // Buat gambar
+    const img = document.createElement('img');
+    img.className = 'school-photo';
+    img.src = 'https://cdn.phototourl.com/member/2026-10-16-c3e58f02-1271-4aef-b9a1-e391ea5c73a0.jpg';
+    img.alt = 'Logo MTs Al Anwar';
+    img.onerror = function() {
+      // Kalau gambar gagal load, sembunyikan
+      this.style.display = 'none';
+    };
+
+    // Sisipkan wrapper sebelum hero-sub
+    heroSub.parentNode.insertBefore(wrapper, heroSub);
+
+    // Pindahkan foto + teks ke dalam wrapper
+    wrapper.appendChild(img);
+    wrapper.appendChild(heroSub);
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: JADWAL TANPA KOLOM JAM ===== -->
+<style>
+  /* Sembunyikan kolom jam (kolom ke-2) */
+  #jadwal th:nth-child(2),
+  #jadwal td:nth-child(2) {
+    display: none !important;
+  }
+
+  /* Kolom pelajaran jadi lebih lebar */
+  #jadwal th:nth-child(1),
+  #jadwal td:nth-child(1) {
+    width: 35%;
+  }
+  #jadwal th:nth-child(3),
+  #jadwal td:nth-child(3) {
+    width: 65%;
+  }
+
+  /* Style pelajaran lebih menonjol */
+  #jadwal td:nth-child(3) {
+    font-weight: 500;
+    letter-spacing: 0.3px;
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const tbody = document.querySelector('#jadwal tbody');
+    if (!tbody) return;
+
+    // ====== ISI JADWAL BARU DI SINI ======
+    // Format: [hari, mata pelajaran]
+    const jadwalBaru = [
+      ['Senin',  'Upacara',               'Matematika',  'Bahasa Indonesia', 'IPA'],
+      ['Selasa', 'Bahasa Inggris',        'IPS',         'PKn',              'Seni Budaya'],
+      ['Rabu',   'Matematika',            'Bahasa Indonesia', 'IPA',        'PJOK'],
+      ['Kamis',  'Agama',                 'Prakarya',    'Bahasa Inggris',   'IPS'],
+      ['Jumat',  'PKn',                   'Seni Budaya', 'Matematika',       'Bahasa Indonesia']
+    ];
+
+    // ====== GANTI JADWAL ======
+    // Cek dulu isi tabel saat ini
+    const rows = tbody.querySelectorAll('tr');
+    console.log('Jadwal saat ini:', rows.length, 'baris');
+    
+    // Kalau kamu mau custom, edit array jadwalBaru di atas
+    // Kalau tidak, biarkan default (patch akan sembunyikan kolom jam saja)
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: JADWAL PELAJARAN MTs AL ANWAR ===== -->
+<style>
+  /* Sembunyikan kolom Jam */
+  #jadwal th:nth-child(2),
+  #jadwal td:nth-child(2) {
+    display: none !important;
+  }
+
+  /* Atur lebar kolom */
+  #jadwal th:nth-child(1),
+  #jadwal td:nth-child(1) {
+    width: 22%;
+    font-weight: 700;
+    color: #00f0ff;
+  }
+  #jadwal th:nth-child(3),
+  #jadwal td:nth-child(3) {
+    width: 78%;
+  }
+
+  /* Style daftar mapel dalam satu baris */
+  #jadwal td:nth-child(3) {
+    font-weight: 500;
+    line-height: 1.8;
+    letter-spacing: 0.3px;
+  }
+
+  /* Pisahkan mapel dengan bullet */
+  #jadwal td:nth-child(3) span.mapel-item {
+    display: inline-block;
+    margin: 2px 0;
+  }
+  #jadwal td:nth-child(3) span.mapel-item:not(:last-child)::after {
+    content: " • ";
+    color: rgba(0, 240, 255, 0.5);
+    margin: 0 6px;
+  }
+
+  @media (max-width: 600px) {
+    #jadwal td:nth-child(3) {
+      font-size: 0.85rem;
+      line-height: 2;
+    }
+    #jadwal td:nth-child(3) span.mapel-item:not(:last-child)::after {
+      content: " • ";
+      display: block;
+      height: 0;
+      visibility: hidden;
+    }
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const tbody = document.querySelector('#jadwal tbody');
+    if (!tbody) return;
+
+    // ===== DATA JADWAL =====
+    const jadwal = [
+      {
+        hari: 'Senin',
+        mapel: ['Upacara', 'Penjaskes', 'Penjaskes', 'Penjaskes', 'SKI', 
+                'B. Inggris', 'Matematika', 'IPA', 'Qurdis']
+      },
+      {
+        hari: 'Selasa',
+        mapel: ['PKN', 'Informatika', 'Seni Budaya', 'Fiqih', 'PKN', 
+                'Fiqih', 'IPA', 'Informatika', 'IPS']
+      },
+      {
+        hari: 'Rabu',
+        mapel: ['Seni Budaya', 'IPA', 'Seni Budaya', 'Qurdis', 
+                'Praktek Ibadah', 'IPS', 'IPS', 'Hafalan', 'Hafalan']
+      },
+      {
+        hari: 'Kamis',
+        mapel: ['B. Inggris', 'B. Inggris', 'B. Indonesia', 'IPA', 
+                'B. Indonesia', 'B. Indonesia', 'IPA', 'B. Indonesia', 'B. Inggris']
+      },
+      {
+        hari: "Jum'at",
+        mapel: ['Matematika', 'Matematika', 'B. Arab', 'B. Arab', 
+                'IPS', 'B. Indonesia']
+      },
+      {
+        hari: 'Sabtu',
+        mapel: ['B. Inggris', 'B. Indonesia', 'Matematika', 'Matematika', 
+                'PKN', 'Akidah Akhlak', 'Akidah Akhlak', 'B. Arab', 'SKI']
+      }
+    ];
+
+    // ===== ISI ULANG TABEL =====
+    tbody.innerHTML = jadwal.map(item => {
+      const mapelHTML = item.mapel
+        .map(m => `<span class="mapel-item">${m}</span>`)
+        .join('');
+      return `
+        <tr>
+          <td>${item.hari}</td>
+          <td style="display:none"></td>
+          <td>${mapelHTML}</td>
+        </tr>
+      `;
+    }).join('');
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: JADWAL RAPI (FIX) ===== -->
+<style>
+  /* Sembunyikan kolom Jam */
+  #jadwal th:nth-child(2),
+  #jadwal td:nth-child(2) {
+    display: none !important;
+  }
+
+  /* Lebar kolom */
+  #jadwal th:nth-child(1),
+  #jadwal td:nth-child(1) {
+    width: 22%;
+    font-weight: 700;
+    color: #00f0ff;
+    vertical-align: top;
+    padding-top: 22px;
+  }
+  #jadwal th:nth-child(3),
+  #jadwal td:nth-child(3) {
+    width: 78%;
+    padding: 18px 20px;
+  }
+
+  /* Daftar mapel — pakai flex biar rapi */
+  .mapel-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  /* Tiap mapel = chip/kotak kecil */
+  .mapel-item {
+    display: inline-block;
+    padding: 6px 14px;
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.12), rgba(123, 47, 247, 0.15));
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #e0e7ff;
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+    transition: all 0.3s;
+  }
+
+  .mapel-item:hover {
+    background: linear-gradient(135deg, rgba(0, 240, 255, 0.25), rgba(255, 0, 229, 0.2));
+    border-color: rgba(0, 240, 255, 0.6);
+    color: #fff;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 240, 255, 0.3);
+  }
+
+  /* Nomor urut kecil di kiri chip */
+  .mapel-item::before {
+    content: attr(data-no) ". ";
+    color: #00f0ff;
+    font-weight: 700;
+    opacity: 0.7;
+  }
+
+  @media (max-width: 600px) {
+    #jadwal th:nth-child(1),
+    #jadwal td:nth-child(1) {
+      width: 25%;
+      padding-top: 20px;
+      font-size: 0.9rem;
+    }
+    #jadwal td:nth-child(3) {
+      padding: 16px;
+    }
+    .mapel-list {
+      gap: 6px;
+    }
+    .mapel-item {
+      font-size: 0.75rem;
+      padding: 5px 10px;
+    }
+  }
+</style>
+
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const tbody = document.querySelector('#jadwal tbody');
+    if (!tbody) return;
+
+    // ===== DATA JADWAL =====
+    const jadwal = [
+      {
+        hari: 'Senin',
+        mapel: ['Upacara', 'Penjaskes', 'Penjaskes', 'Penjaskes', 'SKI', 
+                'B. Inggris', 'Matematika', 'IPA', 'Qurdis']
+      },
+      {
+        hari: 'Selasa',
+        mapel: ['PKN', 'Informatika', 'Seni Budaya', 'Fiqih', 'PKN', 
+                'Fiqih', 'IPA', 'Informatika', 'IPS']
+      },
+      {
+        hari: 'Rabu',
+        mapel: ['Seni Budaya', 'IPA', 'Seni Budaya', 'Qurdis', 
+                'Praktek Ibadah', 'IPS', 'IPS', 'Hafalan', 'Hafalan']
+      },
+      {
+        hari: 'Kamis',
+        mapel: ['B. Inggris', 'B. Inggris', 'B. Indonesia', 'IPA', 
+                'B. Indonesia', 'B. Indonesia', 'IPA', 'B. Indonesia', 'B. Inggris']
+      },
+      {
+        hari: "Jum'at",
+        mapel: ['Matematika', 'Matematika', 'B. Arab', 'B. Arab', 
+                'IPS', 'B. Indonesia']
+      },
+      {
+        hari: 'Sabtu',
+        mapel: ['B. Inggris', 'B. Indonesia', 'Matematika', 'Matematika', 
+                'PKN', 'Akidah Akhlak', 'Akidah Akhlak', 'B. Arab', 'SKI']
+      }
+    ];
+
+    // ===== ISI ULANG TABEL =====
+    tbody.innerHTML = jadwal.map(item => {
+      const mapelHTML = '<div class="mapel-list">' + 
+        item.mapel
+          .map((m, i) => `<span class="mapel-item" data-no="${i + 1}">${m}</span>`)
+          .join('') + 
+        '</div>';
+      return `
+        <tr>
+          <td>${item.hari}</td>
+          <td style="display:none"></td>
+          <td>${mapelHTML}</td>
+        </tr>
+      `;
+    }).join('');
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+  <!-- ===== PATCH: LINK WHATSAPP GRUP ===== -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    // Cari semua tombol WhatsApp di halaman
+    document.querySelectorAll('.btn-3d').forEach(btn => {
+      // Cek apakah tombol ini tombol WhatsApp
+      if (btn.textContent.toLowerCase().includes('whatsapp') || 
+          btn.querySelector('.fa-whatsapp')) {
+        
+        // Ganti link ke grup WhatsApp kamu
+        btn.setAttribute('href', 'https://chat.whatsapp.com/FHj6iS4YV0N25ELCMrm1Nx?s=cl&p=a&mlu=4&ilr=4');
+        btn.setAttribute('target', '_blank');
+        btn.setAttribute('rel', 'noopener noreferrer');
+        
+        // Update isi tombol (pastikan tetap ada icon & teks)
+        btn.innerHTML = '<i class="fa-brands fa-whatsapp"></i> WhatsApp';
+        
+        console.log('✅ Tombol WhatsApp sudah diarahkan ke grup');
+      }
+    });
+
+    // Fallback: cari berdasarkan urutan tombol di section kontak
+    const kontakLinks = document.querySelector('.kontak-links');
+    if (kontakLinks) {
+      const buttons = kontakLinks.querySelectorAll('a.btn-3d');
+      buttons.forEach(btn => {
+        const text = btn.textContent.toLowerCase().trim();
+        if (text.includes('whatsapp') || text.includes('wa')) {
+          btn.href = 'https://chat.whatsapp.com/FHj6iS4YV0N25ELCMrm1Nx?s=cl&p=a&mlu=4&ilr=4';
+          btn.target = '_blank';
+          btn.rel = 'noopener noreferrer';
+        }
+      });
+    }
+  });
+</script>
+<!-- ===== END PATCH ===== -->
+</head>
+<body>
+
+<div class="bg-nebula"></div>
+<div id="stars"></div>
+
+<header>
+  <div class="badge"><span></span> PREMIUM CLASS 2026</div>
+  <h1 class="hero-title">
+    <span style="animation-delay:0s">V</span>
+    <span style="animation-delay:.1s">I</span>
+    <span style="animation-delay:.2s">I</span>
+    <span style="animation-delay:.4s">C</span>
+  </h1>
+  <p class="hero-sub">MTS AL ANWAR</p>
+  <p class="hero-year">TAHUN AJARAN 2025 / 2026</p>
+  <div class="scroll-hint"><span>SCROLL</span><div class="line"></div></div>
+</header>
+
+<nav>
+  <a href="#profil"><i class="fa-solid fa-user"></i>Profil</a>
+  <a href="#siswa"><i class="fa-solid fa-graduation-cap"></i>Siswa</a>
+  <a href="#jadwal"><i class="fa-solid fa-calendar-days"></i>Jadwal</a>
+  <a href="#galeri"><i class="fa-solid fa-image"></i>Galeri</a>
+  <a href="#kontak"><i class="fa-solid fa-envelope"></i>Kontak</a>
+</nav>
+
+<div class="container">
+
+  <section id="profil" class="reveal">
+    <div class="section-head">
+      <span class="section-num">01 / PROFIL</span>
+      <h2 class="section-title">Kenalan Dulu</h2>
+    </div>
+    <div class="profil-grid">
+      <div class="glass-card"><span class="card-icon"><i class="fa-solid fa-chalkboard-user"></i></span><h3>Wali Kelas</h3><p>Bu Siti Rahmawati</p></div>
+      <div class="glass-card"><span class="card-icon"><i class="fa-solid fa-users"></i></span><h3>Jumlah Siswa</h3><p>32 Siswa</p></div>
+      <div class="glass-card"><span class="card-icon"><i class="fa-solid fa-crown"></i></span><h3>Ketua Kelas</h3><p>Andi Pratama</p></div>
+      <div class="glass-card"><span class="card-icon"><i class="fa-solid fa-star"></i></span><h3>Wakil Ketua</h3><p>Dewi Lestari</p></div>
+      <div class="glass-card"><span class="card-icon"><i class="fa-solid fa-pen-to-square"></i></span><h3>Sekretaris</h3><p>Rina Marlina</p></div>
+      <div class="glass-card"><span class="card-icon"><i class="fa-solid fa-sack-dollar"></i></span><h3>Bendahara</h3><p>Fajar Nugroho</p></div>
+    </div>
+  </section>
+
+  <section id="siswa" class="reveal">
+    <div class="section-head">
+      <span class="section-num">02 / ANGGOTA</span>
+      <h2 class="section-title">Warga Kelas</h2>
+    </div>
+    <div class="siswa-grid" id="daftarSiswa"></div>
+  </section>
+
+  <section id="jadwal" class="reveal">
+    <div class="section-head">
+      <span class="section-num">03 / JADWAL</span>
+      <h2 class="section-title">Rutinitas Mingguan</h2>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead><tr><th>Hari</th><th>Jam</th><th>Mata Pelajaran</th></tr></thead>
+        <tbody>
+          <tr><td>Senin</td><td>07.00 - 08.20</td><td><i class="fa-solid fa-calculator subj-icon"></i>Matematika</td></tr>
+          <tr><td>Senin</td><td>08.20 - 09.40</td><td><i class="fa-solid fa-book subj-icon"></i>Bahasa Indonesia</td></tr>
+          <tr><td>Selasa</td><td>07.00 - 08.20</td><td><i class="fa-solid fa-flask subj-icon"></i>IPA</td></tr>
+          <tr><td>Selasa</td><td>08.20 - 09.40</td><td><i class="fa-solid fa-globe subj-icon"></i>Bahasa Inggris</td></tr>
+          <tr><td>Rabu</td><td>07.00 - 08.20</td><td><i class="fa-solid fa-map subj-icon"></i>IPS</td></tr>
+          <tr><td>Rabu</td><td>08.20 - 09.40</td><td><i class="fa-solid fa-scale-balanced subj-icon"></i>PKn</td></tr>
+          <tr><td>Kamis</td><td>07.00 - 08.20</td><td><i class="fa-solid fa-palette subj-icon"></i>Seni Budaya</td></tr>
+          <tr><td>Kamis</td><td>08.20 - 09.40</td><td><i class="fa-solid fa-person-running subj-icon"></i>PJOK</td></tr>
+          <tr><td>Jumat</td><td>07.00 - 08.20</td><td><i class="fa-solid fa-mosque subj-icon"></i>Agama</td></tr>
+          <tr><td>Jumat</td><td>08.20 - 09.40</td><td><i class="fa-solid fa-screwdriver-wrench subj-icon"></i>Prakarya</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section id="galeri" class="reveal">
+    <div class="section-head">
+      <span class="section-num">04 / GALERI</span>
+      <h2 class="section-title">Momen Kita</h2>
+    </div>
+    <div class="galeri">
+      <div class="galeri-item g1"><span class="emoji"><i class="fa-solid fa-bus"></i></span><span class="label">Study Tour</span></div>
+      <div class="galeri-item g2"><span class="emoji"><i class="fa-solid fa-champagne-glasses"></i></span><span class="label">Class Meeting</span></div>
+      <div class="galeri-item g3"><span class="emoji"><i class="fa-solid fa-school"></i></span><span class="label">Kerja Bakti</span></div>
+      <div class="galeri-item g4"><span class="emoji"><i class="fa-solid fa-masks-theater"></i></span><span class="label">Pentas Seni</span></div>
+      <div class="galeri-item g5"><span class="emoji"><i class="fa-solid fa-futbol"></i></span><span class="label">Futsal Kelas</span></div>
+      <div class="galeri-item g6"><span class="emoji"><i class="fa-solid fa-book-open"></i></span><span class="label">Belajar Bersama</span></div>
+    </div>
+  </section>
+
+  <section id="kontak" class="reveal">
+    <div class="section-head">
+      <span class="section-num">05 / KONTAK</span>
+      <h2 class="section-title">Terhubung</h2>
+    </div>
+    <div class="kontak-box">
+      <p>Ikuti keseruan kegiatan kami di media sosial</p>
+      <div class="kontak-links">
+        <a href="#" class="btn-3d"><i class="fa-brands fa-instagram"></i>Instagram</a>
+        <a href="#" class="btn-3d"><i class="fa-brands fa-facebook"></i>Facebook</a>
+        <a href="#" class="btn-3d"><i class="fa-brands fa-youtube"></i>YouTube</a>
+        <a href="#" class="btn-3d"><i class="fa-brands fa-whatsapp"></i>WhatsApp</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 · KELAS VII C MTs AL ANWAR</p>
+  <p>Made with <span class="heart">❤</span> by Tim IT Kelas</p>
+</footer>
+<script>
+// STARS
+const starsBox = document.getElementById('stars');
+for (let i = 0; i < 120; i++) {
+  const s = document.createElement('div');
+  s.className = 'star';
+  const size = Math.random() * 2 + 1;
+  s.style.width = size + 'px';
+  s.style.height = size + 'px';
+  s.style.left = Math.random() * 100 + '%';
+  s.style.top = Math.random() * 100 + '%';
+  s.style.animationDelay = Math.random() * 3 + 's';
+  starsBox.appendChild(s);
+}
+
+// DAFTAR SISWA
+const siswa = [
+  "Andi Pratama","Dewi Lestari","Rina Marlina","Fajar Nugroho",
+  "Bagus Setiawan","Citra Ayu","Dimas Saputra","Eka Wulandari",
+  "Farhan Maulana","Gita Permata","Hendra Wijaya","Indah Sari",
+  "Joko Susilo","Kartika Dewi","Lukman Hakim","Maya Anggraini",
+  "Nanda Pratama","Oka Mahendra","Putri Amelia","Rizky Ramadhan",
+  "Sari Indah","Taufik Hidayat","Umi Kalsum","Vina Melati",
+  "Wahyu Saputra","Xena Aurelia","Yoga Pratama","Zahra Nabila",
+  "Arif Budiman","Bella Safira","Candra Wijaya","Dian Puspita"
+];
+const box = document.getElementById("daftarSiswa");
+siswa.forEach((nama, i) => {
+  const d = document.createElement("div");
+  d.className = "siswa";
+  d.innerHTML = `<div class="siswa-name">${nama}</div><div class="siswa-num">Absen ${String(i+1).padStart(2,'0')}</div>`;
+  box.appendChild(d);
+});
+
+// SMOOTH SCROLL
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+  });
+});
+
+// REVEAL ON SCROLL
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('active');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
